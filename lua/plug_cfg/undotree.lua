@@ -12,4 +12,3 @@ vim.cmd([[
     set undofile
     endif
 ]])
-vim.keymap.set("n", "<leader>du", "<cmd>UndotreeToggle<cr>", { silent = true })

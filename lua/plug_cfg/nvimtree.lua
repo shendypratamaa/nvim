@@ -204,6 +204,4 @@ local cfg = {
     },
 }
 
-vim.keymap.set("n", "<leader>fn", "<cmd>NvimTreeToggle<cr>", { silent = true, desc = "Open File Explorer" })
-
 nvim_tree.setup(cfg)

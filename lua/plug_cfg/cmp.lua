@@ -1,7 +1,42 @@
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
+local cmp_ok, cmp = pcall(require, "cmp")
+local luasnip_ok, luasnip = pcall(require, "luasnip")
+
+if not cmp_ok and luasnip_ok then
+  return
+end
+
+local kind_icons = {
+  Text = ' ',
+  Method = ' ',
+  Function = ' ',
+  Constructor = ' ',
+  Field = ' ',
+  Variable = ' ',
+  Class = ' ',
+  Interface = ' ',
+  Module = ' ',
+  Property = ' ',
+  Unit = ' ',
+  Value = ' ',
+  Enum = ' ',
+  Keyword = ' ',
+  Snippet = ' ',
+  Color = ' ',
+  File = ' ',
+  Reference = ' ',
+  Folder = ' ',
+  EnumMember = ' ',
+  Constant = ' ',
+  Struct = ' ',
+  Event = ' ',
+  Operator = ' ',
+  TypeParameter = ' ',
+}
+
+local borderstyle = {
+  border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+}
 
 cmp.setup {
   snippet = {
@@ -38,8 +73,31 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
+  formatting = {
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
+    end
+  },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+  window = {
+    completion = borderstyle,
+    documentation = borderstyle,
+  },
 }
+
+luasnip.config.setup {}
+
+require('luasnip.loaders.from_vscode').lazy_load()

@@ -11,20 +11,44 @@ return {
     }
   },
 
+  -- file explorer
+  {
+    "nvim-tree/nvim-tree.lua",
+    keys = {
+      { "<leader>fn", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" }
+    }
+  },
+
+  -- undo tree
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<leader>du", "<cmd>UndotreeToggle<cr>", desc = "Open Undotree" }
+    }
+  },
+
+  -- tmux (navigate seamless between neovim)
+  {
+    "christoomey/vim-tmux-navigator",
+    keys = {
+      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  desc = "Tmux Left" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<cr>",  desc = "Tmux Down" },
+      { "<C-k>", "<cmd>TmuxNavigateUp<cr>",    desc = "Tmux Up" },
+      { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Tmux Right" },
+    },
+  },
+
+  -- icons
+  { "nvim-tree/nvim-web-devicons",        lazy = true },
+
   -- Detect tabstop and shiftwidth automatically
   { 'tpope/vim-sleuth' },
 
   -- motion
   { 'tpope/vim-surround' },
 
-  -- icons
-  { "nvim-tree/nvim-web-devicons" },
-
   -- indent
   { 'lukas-reineke/indent-blankline.nvim' },
-
-  -- file explorer
-  { "nvim-tree/nvim-tree.lua" },
 
   -- status line
   { 'nvim-lualine/lualine.nvim' },
@@ -32,14 +56,8 @@ return {
   -- peek number
   { 'nacro90/numb.nvim' },
 
-  -- undo tree
-  { "mbbill/undotree" },
-
-  -- tmux (navigate seamless between neovim)
-  { "christoomey/vim-tmux-navigator" },
-
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',               opts = {} },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   { 'lewis6991/gitsigns.nvim' },
@@ -59,8 +77,8 @@ return {
     },
   },
 
+  -- Autocompletion
   {
-    -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
@@ -71,6 +89,13 @@ return {
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
+  },
+
+  -- autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {}
   },
 
   -- colorscheme
