@@ -27,11 +27,11 @@ require("lazy").setup('plug', {
         "tohtml",
         "tutor",
         "zipPlugin",
-        "intro",
       }
     }
   }
 })
+
 require("base_cfg.keymaps")
 require("base_cfg.options")
 require("base_cfg.autocommands")
