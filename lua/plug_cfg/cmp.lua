@@ -81,17 +81,29 @@ cmp.setup {
       vim_item.menu = ({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
+        luasnip = "[LuaSnip]",
       })[entry.source.name]
       return vim_item
     end
   },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+  }),
+  cmp.setup.cmdline({ '/', '?' }, {
+    view = {
+      entries = { name = 'wildmenu', separator = ' | ' }
+    },
+  }),
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  }),
   window = {
     completion = borderstyle,
     documentation = borderstyle,

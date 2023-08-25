@@ -53,27 +53,34 @@ local on_attach = function(_, bufnr)
   nmap('<leader>fo', "<cmd>Lspsaga outline<cr>", '[O]utline')
   nmap('<leader>pd', "<cmd>Lspsaga peek_definition<cr>", '[P]eek [D]efinition')
 
-  -- diagnostic
+  -- Diagnostic
   nmap('<leader>e', "<cmd>Lspsaga show_line_diagnostics ++unfocus<cr>", 'Show Diagnostic Current Line')
   nmap('<leader>n', "<cmd>Lspsaga diagnostic_jump_next<cr>", 'Diagnostic [N]ext')
   nmap('<leader>p', "<cmd>Lspsaga diagnostic_jump_prev<cr>", 'Diagnostic [P]rev')
 
-  -- find references
+  -- Incoming Outgoing Calls
   nmap('<leader>ic', "<cmd>Lspsaga incoming_calls<cr>", '[I]incoming [C]alls')
   nmap('<leader>oc', "<cmd>Lspsaga outgoing_calls<cr>", '[O]utgoing [C]calls')
 
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-  nmap('gI', require("telescope.builtin").lsp_implementations, '[G]oto [I]mplementation')
-  nmap('gD', require("telescope.builtin").lsp_definitions, '[G]oto [D]eclaration')
+  -- Definitions References Implementations
+  nmap('<leader>fr', "<cmd>Lspsaga finder ref<cr>", '[F]inder [R]eferences')
+  nmap('<leader>fd', "<cmd>Lspsaga finder def<cr>", '[F]inder [D]efinition')
+  nmap('<leader>fi', "<cmd>Lspsaga finder imp<cr>", '[F]inder [I]implementations')
+  nmap('<leader>fa', "<cmd>Lspsaga finder def+ref+imp<cr>", '[F]inder [A]All (Definitions, References, implementations)')
 
-  -- format
+  -- Format
   nmap('<leader>ff', '<cmd>Format<cr>', '[F]ormat files')
 end
 
-require("lspsaga").setup({ symbol_in_winbar = { enable = false }, })
 require('neodev').setup()
+require("lspsaga").setup({
+  symbol_in_winbar = {
+    enable = true
+  },
+  finder = {
+    layout = "normal"
+  }
+})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

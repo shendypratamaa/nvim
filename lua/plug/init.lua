@@ -7,7 +7,6 @@ return {
       { "]ga", "<cmd>Git<cr>",          desc = "Open Fugitive Git" },
       { "]gq", "<cmd>diffget //2<cr>",  desc = "Diff Get //2" },
       { "]gp", "<cmd>diffget //3<cr>",  desc = "Diff Get //3" },
-      { "]gb", "<cmd>Flogsplit<cr>",    desc = "Preview Branch" }
     }
   },
 
@@ -84,8 +83,13 @@ return {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
+
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-path',
+
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
@@ -131,7 +135,8 @@ return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context'
+      'nvim-treesitter/nvim-treesitter-context',
+      'windwp/nvim-ts-autotag'
     },
     build = ':TSUpdate',
   },
