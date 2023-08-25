@@ -39,10 +39,13 @@ return {
   { "christoomey/vim-tmux-navigator" },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',               opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   { 'lewis6991/gitsigns.nvim' },
+
+  -- schemastore
+  { "b0o/schemastore.nvim" },
 
   {
     -- LSP Configuration & Plugins
@@ -51,7 +54,8 @@ return {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'williamboman/mason.nvim',          config = true },
       { 'j-hui/fidget.nvim',                tag = 'legacy', opts = {} },
-      { 'folke/neodev.nvim' }
+      { 'folke/neodev.nvim' },
+      { 'nvimdev/lspsaga.nvim' }
     },
   },
 

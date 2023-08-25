@@ -53,3 +53,6 @@ keymap("n", "sp", "<cmd>sp<cr>", opts)
 
 -- LAZY
 keymap("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true, desc = "Open Lazy" })
+
+-- MASON
+keymap("n", "<leader>m", "<cmd>Mason<cr>", { silent = true, desc = "Open Mason" })
