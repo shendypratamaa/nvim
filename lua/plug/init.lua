@@ -3,45 +3,42 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      { "]gd", "<cmd>Gvdiffsplit!<cr>", desc = "Open Fugitive Git" },
-      { "]ga", "<cmd>Git<cr>",          desc = "Open Fugitive Git" },
-      { "]gq", "<cmd>diffget //2<cr>",  desc = "Diff Get //2" },
-      { "]gp", "<cmd>diffget //3<cr>",  desc = "Diff Get //3" },
-    }
+      { ']gd', '<cmd>Gvdiffsplit!<cr>', desc = 'Open Fugitive Git' },
+      { ']ga', '<cmd>Git<cr>', desc = 'Open Fugitive Git' },
+      { ']gq', '<cmd>diffget //2<cr>', desc = 'Diff Get //2' },
+      { ']gp', '<cmd>diffget //3<cr>', desc = 'Diff Get //3' },
+    },
   },
 
   -- file explorer
   {
-    "nvim-tree/nvim-tree.lua",
+    'nvim-tree/nvim-tree.lua',
     keys = {
-      { "<leader>fn", "<cmd>NvimTreeToggle<cr>", desc = "Open File Explorer" }
-    }
+      { '<leader>fn', '<cmd>NvimTreeToggle<cr>', desc = 'Open File Explorer' },
+    },
   },
 
   -- undo tree
   {
-    "mbbill/undotree",
+    'mbbill/undotree',
     keys = {
-      { "<leader>du", "<cmd>UndotreeToggle<cr>", desc = "Open Undotree" }
-    }
+      { '<leader>du', '<cmd>UndotreeToggle<cr>', desc = 'Open Undotree' },
+    },
   },
 
   -- tmux (navigate seamless between neovim)
   {
-    "christoomey/vim-tmux-navigator",
+    'christoomey/vim-tmux-navigator',
     keys = {
-      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  desc = "Tmux Left" },
-      { "<C-j>", "<cmd>TmuxNavigateDown<cr>",  desc = "Tmux Down" },
-      { "<C-k>", "<cmd>TmuxNavigateUp<cr>",    desc = "Tmux Up" },
-      { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Tmux Right" },
+      { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', desc = 'Tmux Left' },
+      { '<C-j>', '<cmd>TmuxNavigateDown<cr>', desc = 'Tmux Down' },
+      { '<C-k>', '<cmd>TmuxNavigateUp<cr>', desc = 'Tmux Up' },
+      { '<C-l>', '<cmd>TmuxNavigateRight<cr>', desc = 'Tmux Right' },
     },
   },
 
   -- icons
-  { "nvim-tree/nvim-web-devicons",        lazy = true },
-
-  -- Detect tabstop and shiftwidth automatically
-  { 'tpope/vim-sleuth' },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   -- motion
   { 'tpope/vim-surround' },
@@ -56,23 +53,23 @@ return {
   { 'nacro90/numb.nvim' },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',               opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   { 'lewis6991/gitsigns.nvim' },
 
   -- schemastore
-  { "b0o/schemastore.nvim" },
+  { 'b0o/schemastore.nvim' },
 
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'williamboman/mason.nvim',          config = true },
-      { 'j-hui/fidget.nvim',                tag = 'legacy', opts = {} },
+      { 'williamboman/mason.nvim', config = true },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
       { 'folke/neodev.nvim' },
-      { 'nvimdev/lspsaga.nvim' }
+      { 'nvimdev/lspsaga.nvim' },
     },
   },
 
@@ -98,18 +95,18 @@ return {
   -- autopairs
   {
     'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    opts = {}
+    event = 'InsertEnter',
+    opts = {},
   },
 
   -- colorscheme
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end
+      vim.cmd.colorscheme('catppuccin')
+    end,
   },
 
   -- "gc" to comment visual regions/lines
@@ -125,7 +122,7 @@ return {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         cond = function()
-          return vim.fn.executable 'make' == 1
+          return vim.fn.executable('make') == 1
         end,
       },
     },
@@ -136,29 +133,41 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'nvim-treesitter/nvim-treesitter-context',
-      'windwp/nvim-ts-autotag'
+      'windwp/nvim-ts-autotag',
     },
     build = ':TSUpdate',
   },
 
-  -- web dev utils
+  -- WEB DEV UTILS
+
+  -- colorizer
   {
-    "NvChad/nvim-colorizer.lua",
-    event = "BufRead",
+    'NvChad/nvim-colorizer.lua',
+    event = 'BufRead',
     opts = {
       user_default_options = {
-        tailwind = true
-      }
-    }
+        tailwind = true,
+      },
+    },
   },
 
   -- import cost
   {
-    "barrett-ruth/import-cost.nvim",
-    build = "sh install.sh yarn",
-    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx" },
+    'barrett-ruth/import-cost.nvim',
+    build = 'sh install.sh yarn',
+    ft = {
+      'typescript',
+      'javascript',
+      'typescriptreact',
+      'javascriptreact',
+      'tsx',
+      'jsx',
+    },
     config = function()
-      require("import-cost").setup({})
+      require('import-cost').setup({})
     end,
-  }
+  },
+
+  -- formatter
+  { 'shendypratamaa/null-ls.nvim' },
 }

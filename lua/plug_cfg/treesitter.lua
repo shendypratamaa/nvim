@@ -1,5 +1,15 @@
-require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'c', 'lua', 'tsx', 'typescript', 'javascript', 'vimdoc', 'vim', 'markdown', 'markdown_inline' },
+require('nvim-treesitter.configs').setup({
+  ensure_installed = {
+    'c',
+    'lua',
+    'tsx',
+    'typescript',
+    'javascript',
+    'vimdoc',
+    'vim',
+    'markdown',
+    'markdown_inline',
+  },
   auto_install = false,
   highlight = { enable = true },
   indent = { enable = true },
@@ -56,4 +66,4 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
-}
+})
