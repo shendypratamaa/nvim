@@ -1,7 +1,15 @@
 return {
   -- Git related plugins
-  { 'tpope/vim-fugitive' },
-  { 'tpope/vim-rhubarb' },
+  {
+    'tpope/vim-fugitive',
+    keys = {
+      { "]gd", "<cmd>Gvdiffsplit!<cr>", desc = "Open Fugitive Git" },
+      { "]ga", "<cmd>Git<cr>",          desc = "Open Fugitive Git" },
+      { "]gq", "<cmd>diffget //2<cr>",  desc = "Diff Get //2" },
+      { "]gp", "<cmd>diffget //3<cr>",  desc = "Diff Get //3" },
+      { "]gb", "<cmd>Flogsplit<cr>",    desc = "Preview Branch" }
+    }
+  },
 
   -- Detect tabstop and shiftwidth automatically
   { 'tpope/vim-sleuth' },
@@ -31,7 +39,7 @@ return {
   { "christoomey/vim-tmux-navigator" },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim',               opts = {} },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   { 'lewis6991/gitsigns.nvim' },
@@ -98,4 +106,25 @@ return {
     },
     build = ':TSUpdate',
   },
+
+  -- web dev utils
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = "BufRead",
+    opts = {
+      user_default_options = {
+        tailwind = true
+      }
+    }
+  },
+
+  -- import cost
+  {
+    "barrett-ruth/import-cost.nvim",
+    build = "sh install.sh yarn",
+    ft = { "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx" },
+    config = function()
+      require("import-cost").setup({})
+    end,
+  }
 }

@@ -46,3 +46,10 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "Y", [[yg$]], opts)
 keymap("n", "]Y", [[gg"+yG]])
 keymap({"n","v"}, "]r", [["_dP]], opts)
+
+-- SPLIT WINDOW
+keymap("n", "vsp", "<cmd>vsp<cr>", opts)
+keymap("n", "sp", "<cmd>sp<cr>", opts)
+
+-- LAZY
+keymap("n", "<leader>l", "<cmd>Lazy<cr>", { silent = true, desc = "Open Lazy" })
