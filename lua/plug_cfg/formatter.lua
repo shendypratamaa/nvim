@@ -1,9 +1,19 @@
-local null_ls = require('null-ls')
+local nls_ok, nls = pcall(require, 'null-ls')
 
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.eslint_d,
-  },
-})
+if not nls_ok then
+  return
+end
+
+local M = {}
+
+M.setup = function()
+  nls.setup({
+    sources = {
+      nls.builtins.formatting.stylua,
+      nls.builtins.formatting.prettierd,
+      nls.builtins.diagnostics.eslint_d,
+    },
+  })
+end
+
+return M

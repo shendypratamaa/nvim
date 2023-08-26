@@ -16,6 +16,9 @@ return {
     keys = {
       { '<leader>fn', '<cmd>NvimTreeToggle<cr>', desc = 'Open File Explorer' },
     },
+    config = function()
+      require('plug_cfg.nvimtree')
+    end,
   },
 
   -- undo tree
@@ -35,6 +38,9 @@ return {
       { '<C-k>', '<cmd>TmuxNavigateUp<cr>', desc = 'Tmux Up' },
       { '<C-l>', '<cmd>TmuxNavigateRight<cr>', desc = 'Tmux Right' },
     },
+    config = function()
+      require('plug_cfg.tmux-navigator')
+    end,
   },
 
   -- icons
@@ -70,6 +76,7 @@ return {
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
       { 'folke/neodev.nvim' },
       { 'nvimdev/lspsaga.nvim' },
+      { 'pmizio/typescript-tools.nvim' },
     },
   },
 
@@ -96,7 +103,9 @@ return {
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    opts = {},
+    config = function()
+      require('plug_cfg.autopairs')
+    end,
   },
 
   -- colorscheme
@@ -149,23 +158,6 @@ return {
         tailwind = true,
       },
     },
-  },
-
-  -- import cost
-  {
-    'barrett-ruth/import-cost.nvim',
-    build = 'sh install.sh yarn',
-    ft = {
-      'typescript',
-      'javascript',
-      'typescriptreact',
-      'javascriptreact',
-      'tsx',
-      'jsx',
-    },
-    config = function()
-      require('import-cost').setup({})
-    end,
   },
 
   -- formatter

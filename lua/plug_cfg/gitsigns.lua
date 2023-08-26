@@ -18,5 +18,11 @@ require('gitsigns').setup({
       require('gitsigns').preview_hunk,
       { buffer = bufnr, desc = '[P]review [H]unk' }
     )
+    vim.keymap.set(
+      'n',
+      '<leader>gt',
+      require("gitsigns").toggle_deleted,
+      { buffer = bufnr, desc = '[G]it [T]toggle Delete' }
+    )
   end,
 })

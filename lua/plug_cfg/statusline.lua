@@ -35,11 +35,14 @@ local icon_ft = {
     local ft = vim.bo.filetype
     local ws = {
       lua = '',
+      jsx = '',
+      tsx = '󰛦',
       javascript = '',
       typescript = '󰛦',
       javascriptreact = '',
       typescriptreact = '󰛦',
       json = '󰘦',
+      jsonc = '󰘦',
       html = '',
       css = '',
       sass = '',
@@ -47,9 +50,9 @@ local icon_ft = {
       sh = '󰨊',
     }
     local s = function()
-      local w = vim.o.columns / 6
+      local w = vim.o.columns / 4.5
       local h = ''
-      for i = 1, w do
+      for _ = 1, w do
         h = h .. ' '
       end
       return h
@@ -66,19 +69,15 @@ local icon_ft = {
     end
     return y
   end,
-  on_click = function()
-    vim.api.nvim_command('Mason')
-  end,
 }
 
 local filename = {
   'filename',
   padding = 1,
   fmt = function()
-    local fn = vim.fn
-    local cwd = fn.expand('%:p')
-    local short = fn.pathshorten(cwd, 1)
-    return string.lower(short)
+    local ft = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')
+    local short = vim.fn.pathshorten(ft, 0)
+    return short
   end,
   on_click = function()
     vim.api.nvim_command('Telescope find_files')
