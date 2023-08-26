@@ -78,7 +78,7 @@ local colors = {
 
 local telescope_borders = {
   TelescopePromptPrefix = { fg = colors.black },
-  TelescopePromptCounter = { fg = colors.white, bold = true },
+  TelescopePromptCounter = { fg = colors.black, bold = true },
   TelescopePromptBorder = { fg = colors.white, bg = colors.white },
   TelescopePromptNormal = { fg = colors.black, bg = colors.white },
   TelescopePromptTitle = { fg = colors.white, bg = colors.white, bold = true },
@@ -153,3 +153,4 @@ vim.keymap.set(
   builtin.diagnostics,
   { desc = '[S]earch [D]iagnostics' }
 )
+

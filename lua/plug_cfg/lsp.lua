@@ -119,3 +119,4 @@ require('lspsaga').setup({
 })
 
 require('plug_cfg.mason').setup(servers, capabilities, on_attach)
+

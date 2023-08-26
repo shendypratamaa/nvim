@@ -12,3 +12,4 @@ vim.cmd([[
     set undofile
     endif
 ]])
+

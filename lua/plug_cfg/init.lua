@@ -7,3 +7,4 @@ require('plug_cfg.undotree')
 require('plug_cfg.numb')
 require('plug_cfg.statusline')
 require('plug_cfg.indent')
+

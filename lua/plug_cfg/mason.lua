@@ -22,3 +22,4 @@ M.setup = function(servers, capabilities, on_attach)
 end
 
 return M
+

@@ -205,3 +205,4 @@ local cfg = {
 }
 
 nvim_tree.setup(cfg)
+

@@ -3,14 +3,14 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      { ']gd', '<cmd>Gvdiffsplit!<cr>', desc = 'Open Fugitive Git' },
-      { ']ga', '<cmd>Git<cr>', desc = 'Open Fugitive Git' },
-      { ']gq', '<cmd>diffget //2<cr>', desc = 'Diff Get //2' },
-      { ']gp', '<cmd>diffget //3<cr>', desc = 'Diff Get //3' },
+      { '<leader>gd', '<cmd>Gvdiffsplit!<cr>', desc = 'Open Fugitive Git' },
+      { '<leader>ga', '<cmd>Git<cr>', desc = 'Open Fugitive Git' },
+      { '<leader>gq', '<cmd>diffget //2<cr>', desc = 'Diff Get //2' },
+      { '<leader>gp', '<cmd>diffget //3<cr>', desc = 'Diff Get //3' },
     },
   },
 
-  -- file explorer
+  -- File Explorer
   {
     'nvim-tree/nvim-tree.lua',
     keys = {
@@ -21,7 +21,7 @@ return {
     end,
   },
 
-  -- undo tree
+  -- Undo Tree
   {
     'mbbill/undotree',
     keys = {
@@ -29,7 +29,7 @@ return {
     },
   },
 
-  -- tmux (navigate seamless between neovim)
+  -- Tmux (navigate seamless between neovim)
   {
     'christoomey/vim-tmux-navigator',
     keys = {
@@ -43,32 +43,48 @@ return {
     end,
   },
 
-  -- icons
+  -- Icons
   { 'nvim-tree/nvim-web-devicons', lazy = true },
 
-  -- motion
+  -- Motion
   { 'tpope/vim-surround' },
 
-  -- indent
+  -- Indent
   { 'lukas-reineke/indent-blankline.nvim' },
 
-  -- status line
+  -- Status Line
   { 'nvim-lualine/lualine.nvim' },
 
-  -- peek number
+  -- Peek Number
   { 'nacro90/numb.nvim' },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      plugins = {
+        marks = false,
+        register = false,
+      },
+      key_labels = {
+        ['<space>'] = 'SPC',
+        ['<cr>'] = 'RET',
+        ['<tab>'] = 'TAB',
+      },
+      layout = {
+        height = { min = 4, max = 25 },
+        width = { min = 20, max = 50 },
+        spacing = 3,
+        align = 'center',
+      },
+    },
+  },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   { 'lewis6991/gitsigns.nvim' },
 
-  -- schemastore
-  { 'b0o/schemastore.nvim' },
-
+  -- LSP Configuration & Plugins
   {
-    -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim' },
@@ -77,6 +93,7 @@ return {
       { 'folke/neodev.nvim' },
       { 'nvimdev/lspsaga.nvim' },
       { 'pmizio/typescript-tools.nvim' },
+      { 'b0o/schemastore.nvim' },
     },
   },
 
@@ -99,7 +116,7 @@ return {
     },
   },
 
-  -- autopairs
+  -- Autopairs
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -108,7 +125,7 @@ return {
     end,
   },
 
-  -- colorscheme
+  -- Colorscheme
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -137,6 +154,7 @@ return {
     },
   },
 
+  -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -147,9 +165,7 @@ return {
     build = ':TSUpdate',
   },
 
-  -- WEB DEV UTILS
-
-  -- colorizer
+  -- Colorizer
   {
     'NvChad/nvim-colorizer.lua',
     event = 'BufRead',
@@ -160,6 +176,7 @@ return {
     },
   },
 
-  -- formatter
+  -- Formatter
   { 'shendypratamaa/null-ls.nvim' },
 }
+

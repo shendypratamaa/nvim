@@ -5,3 +5,4 @@ require('numb').setup({
   number_only = false,
   centered_peeking = true,
 })
+

@@ -60,3 +60,4 @@ keymap(
   '<cmd>Mason<cr>',
   { silent = true, desc = 'Open Mason' }
 )
+

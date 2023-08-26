@@ -27,66 +27,20 @@ local branch = {
   end,
 }
 
-local icon_ft = {
-  'icon_ft',
-  padding = 0,
-  icons_enabled = false,
-  fmt = function()
-    local ft = vim.bo.filetype
-    local ws = {
-      lua = '',
-      jsx = '',
-      tsx = '󰛦',
-      javascript = '',
-      typescript = '󰛦',
-      javascriptreact = '',
-      typescriptreact = '󰛦',
-      json = '󰘦',
-      jsonc = '󰘦',
-      html = '',
-      css = '',
-      sass = '',
-      markdown = '',
-      sh = '󰨊',
-    }
-    local s = function()
-      local w = vim.o.columns / 4.5
-      local h = ''
-      for _ = 1, w do
-        h = h .. ' '
-      end
-      return h
-    end
-    local x = s()
-    local y = ''
-    for _, i in pairs(ws) do
-      if ft == _ then
-        y = x .. i
-        break
-      else
-        y = x .. '🙅'
-      end
-    end
-    return y
-  end,
-}
-
-local filename = {
-  'filename',
-  padding = 1,
-  fmt = function()
-    local ft = string.gsub(vim.api.nvim_buf_get_name(0), vim.loop.cwd(), '')
-    local short = vim.fn.pathshorten(ft, 0)
-    return short
-  end,
-  on_click = function()
-    vim.api.nvim_command('Telescope find_files')
-  end,
+local buffers = {
+  'buffers',
+  show_filename_only = true,
+  use_mode_colors = true,
+  symbols = {
+    modified = ' 🔥',
+    alternate_file = '',
+    directory = '',
+  },
 }
 
 local diff = {
   'diff',
-  padding = 1,
+  padding = 0,
   colored = true,
   symbols = { added = ' ', modified = ' ', removed = ' ' },
 }
@@ -98,8 +52,8 @@ local diagnostics = {
   always_visible = true,
   update_in_insert = false,
   sources = { 'nvim_diagnostic' },
-  sections = { 'error', 'warn' },
-  symbols = { error = ' ', warn = ' ' },
+  sections = { 'error', 'warn', 'info', 'hint' },
+  symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
 }
 
 local spaces = {
@@ -157,7 +111,7 @@ lualine.setup({
   sections = {
     lualine_a = { mode },
     lualine_b = { branch },
-    lualine_c = { icon_ft, filename },
+    lualine_c = { buffers },
     lualine_x = { diff, diagnostics, spaces, encoding, filetype },
     lualine_y = { location },
     lualine_z = { 'progress' },
@@ -173,3 +127,4 @@ lualine.setup({
   tabline = {},
   extensions = {},
 })
+

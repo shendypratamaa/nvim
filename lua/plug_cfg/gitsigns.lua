@@ -1,28 +1,39 @@
 require('gitsigns').setup({
+  current_line_blame = true,
+  current_line_blame_opts = {
+    delay = 500,
+  },
   on_attach = function(bufnr)
     vim.keymap.set(
       'n',
-      '<leader>gp',
+      ']c',
       require('gitsigns').prev_hunk,
       { buffer = bufnr, desc = '[G]o to [P]revious Hunk' }
     )
     vim.keymap.set(
       'n',
-      '<leader>gn',
+      '[c',
       require('gitsigns').next_hunk,
       { buffer = bufnr, desc = '[G]o to [N]ext Hunk' }
     )
     vim.keymap.set(
       'n',
-      '<leader>ph',
+      '<leader>gh',
       require('gitsigns').preview_hunk,
-      { buffer = bufnr, desc = '[P]review [H]unk' }
+      { buffer = bufnr, desc = '[G]it Preview [H]unk' }
     )
     vim.keymap.set(
       'n',
       '<leader>gt',
-      require("gitsigns").toggle_deleted,
+      require('gitsigns').toggle_deleted,
+      { buffer = bufnr, desc = '[G]it [T]toggle Delete' }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>gb',
+      require('gitsigns').toggle_current_line_blame,
       { buffer = bufnr, desc = '[G]it [T]toggle Delete' }
     )
   end,
 })
+

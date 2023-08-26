@@ -29,3 +29,4 @@ vim.g.indnet_blankline_show_current_context = {
 }
 
 indent.setup()
+
