@@ -34,6 +34,24 @@ require('gitsigns').setup({
       require('gitsigns').toggle_current_line_blame,
       { buffer = bufnr, desc = '[G]it [T]toggle Delete' }
     )
+    vim.keymap.set(
+      'n',
+      '<leader>gH',
+      require('gitsigns').stage_hunk,
+      { buffer = bufnr, desc = '[G]it Stage [H]unk' }
+    )
+    vim.keymap.set('v', '<leader>gH', function()
+      require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end, { buffer = bufnr, desc = '[G]it Stage [H]unk' })
+    vim.keymap.set(
+      'n',
+      '<leader>gR',
+      require('gitsigns').reset_hunk,
+      { buffer = bufnr, desc = '[G]it [R]eset hunk' }
+    )
+    vim.keymap.set('v', '<leader>gR', function()
+      require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
   end,
 })
 
