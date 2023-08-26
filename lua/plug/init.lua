@@ -1,5 +1,7 @@
 return {
   -- Git related plugins
+  { 'lewis6991/gitsigns.nvim' },
+
   {
     'tpope/vim-fugitive',
     keys = {
@@ -49,9 +51,6 @@ return {
   -- Motion
   { 'tpope/vim-surround' },
 
-  -- Indent
-  { 'lukas-reineke/indent-blankline.nvim' },
-
   -- Status Line
   { 'nvim-lualine/lualine.nvim' },
 
@@ -79,9 +78,6 @@ return {
       },
     },
   },
-
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
-  { 'lewis6991/gitsigns.nvim' },
 
   -- LSP Configuration & Plugins
   {
@@ -137,6 +133,9 @@ return {
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  -- Alternative Navigation
+  { 'ThePrimeagen/harpoon' },
 
   -- Fuzzy Finder (files, lsp, etc)
   {

@@ -1,10 +1,10 @@
 require('plug_cfg.lsp')
 require('plug_cfg.cmp')
 require('plug_cfg.telescope')
+require('plug_cfg.harpoon')
 require('plug_cfg.treesitter')
 require('plug_cfg.gitsigns')
 require('plug_cfg.undotree')
 require('plug_cfg.numb')
 require('plug_cfg.statusline')
-require('plug_cfg.indent')
 
