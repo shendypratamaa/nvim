@@ -4,22 +4,45 @@ return {
 
   {
     'tpope/vim-fugitive',
-    keys = {
-      { '<leader>gd', '<cmd>Gvdiffsplit!<cr>', desc = 'Open Fugitive Git' },
-      { '<leader>ga', '<cmd>Git<cr>', desc = 'Open Fugitive Git' },
-      { '<leader>gq', '<cmd>diffget //2<cr>', desc = 'Diff Get //2' },
-      { '<leader>gp', '<cmd>diffget //3<cr>', desc = 'Diff Get //3' },
-    },
+    config = function()
+      vim.keymap.set(
+        'n',
+        '<leader>gd',
+        '<cmd>Gvdiffsplit!<cr>',
+        { desc = 'Open Fugitive Git' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>ga',
+        '<cmd>Git<cr>',
+        { desc = 'Open Fugitive Git' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>gq',
+        '<cmd>diffget //2<cr>',
+        { desc = 'Diff Get //2' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>gp',
+        '<cmd>diffget //3<cr>',
+        { desc = 'Diff Get //3' }
+      )
+    end,
   },
 
   -- File Explorer
   {
     'nvim-tree/nvim-tree.lua',
-    keys = {
-      { '<leader>fn', '<cmd>NvimTreeToggle<cr>', desc = 'Open File Explorer' },
-    },
     config = function()
       require('plug_cfg.nvimtree')
+      vim.keymap.set(
+        'n',
+        '<leader>fn',
+        '<cmd>NvimTreeToggle<cr>',
+        { desc = 'Open File Explorer' }
+      )
     end,
   },
 
@@ -73,7 +96,7 @@ return {
       layout = {
         height = { min = 4, max = 25 },
         width = { min = 20, max = 50 },
-        spacing = 3,
+        spacing = 1,
         align = 'center',
       },
     },

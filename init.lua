@@ -36,5 +36,5 @@ require('lazy').setup('plug', disabled_default)
 require('base_cfg.keymaps')
 require('base_cfg.options')
 require('base_cfg.autocommands')
-require('plug_cfg')
+require('plug_cfg.init')
 

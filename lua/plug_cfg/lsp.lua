@@ -1,8 +1,8 @@
 local signs = {
   { name = 'DiagnosticSignError', text = '' },
   { name = 'DiagnosticSignWarn', text = '' },
-  { name = 'DiagnosticSignHint', text = '' },
-  { name = 'DiagnosticSignInfo', text = 'ﯧ' },
+  { name = 'DiagnosticSignInfo', text = '' },
+  { name = 'DiagnosticSignHint', text = '' },
 }
 
 for _, sign in ipairs(signs) do
@@ -61,9 +61,31 @@ local on_attach = function(client, bufnr)
 
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
+    local n_lines = vim.api.nvim_buf_line_count(0)
+    local last_nonblank = vim.fn.prevnonblank(n_lines)
+    if last_nonblank <= n_lines then
+      vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' })
+    end
   end, { desc = 'Format current buffer with LSP' })
 
+  -- Typescript
+  if client.name == 'tsserver' then
+    nmap('<leader>to', '<cmd>TSToolsOrganizeImports<cr>', '[T]ypescript [O]rganize')
+    nmap('<leader>tm', '<cmd>TSToolsAddMissingImports<cr>', '[T]ypescript [M]issing')
+    nmap('<leader>ts', '<cmd>TSToolsSortImports<cr>', '[T]ypescript [S]ort')
+    nmap('<leader>tr', '<cmd>TSToolsRemoveUnusedImports<cr>', '[T]ypescript [R]emove Unused Imports')
+    nmap('<leader>tf', '<cmd>TSToolsFixAll<cr>', '[T]ypescript [F]ix All')
+    nmap('<leader>tf', '<cmd>TSToolsGoToSourceDefinition<cr>', '[T]ypescript [F]ix All')
+  end
+
+  -- Lua
+  if client.name == "lua_ls" then
+    nmap(']w', '<cmd>w<cr><cmd>so%<cr>', 'Source File')
+  end
+
+  -- Basic Lsp
   nmap('K', '<cmd>Lspsaga hover_doc<cr>', 'Hover Documentation')
+  nmap('gd', '<cmd>Lspsaga goto_definition<cr>', '[G]oto [D]efinition')
   nmap('<leader>rn', '<cmd>Lspsaga rename<cr>', '[R]e[n]ame')
   nmap('<leader>ca', '<cmd>Lspsaga code_action<cr>', '[C]ode [A]ction')
   nmap('<leader>fo', '<cmd>Lspsaga outline<cr>', '[O]utline')
@@ -84,17 +106,13 @@ local on_attach = function(client, bufnr)
   nmap('<leader>fi', '<cmd>Lspsaga finder imp<cr>', '[F]inder [I]mplementation')
   nmap('<leader>fa', '<cmd>Lspsaga finder def+ref+imp<cr>', '[F]inder [A]All')
 
-  -- Typescript
-  if client.name == "tsserver" then
-    nmap('<leader>to', '<cmd>TSToolsOrganizeImports<cr>', '[T]ypescript [O]rganize')
-    nmap('<leader>tm', '<cmd>TSToolsAddMissingImports<cr>', '[T]ypescript [M]issing')
-    nmap('<leader>ts', '<cmd>TSToolsSortImports<cr>', '[T]ypescript [S]ort')
-    nmap('<leader>tr', '<cmd>TSToolsRemoveUnusedImports<cr>', '[T]ypescript [R]emove Unused Imports')
-    nmap('<leader>tf', '<cmd>TSToolsFixAll<cr>', '[T]ypescript [F]ix All')
-    nmap('<leader>tf', '<cmd>TSToolsGoToSourceDefinition<cr>', '[T]ypescript [F]ix All')
-  else
-    nmap('gd', '<cmd>Lspsaga goto_definition<cr>', '[G]oto [D]efinition')
-  end
+  -- Intergrate Terminal With MyScripts
+  nmap('<leader>tF', '<cmd>Lspsaga term_toggle lf<cr>', 'Open LF')
+  nmap('<leader>te', '<cmd>Lspsaga term_toggle emoji<cr>', 'Open Emoji')
+  nmap('<leader>ts', '<cmd>Lspsaga term_toggle tmux-sesionizer<cr>', 'Open New Tmux Session')
+  nmap('<leader>tf', '<cmd>Lspsaga term_toggle search<cr>', 'Search Sometings From Internet')
+  nmap('<leader>tk', '<cmd>Lspsaga term_toggle mkill<cr>', 'Kill Process')
+  nmap('<leader>tb', '<cmd>Lspsaga term_toggle bookmarks<cr>', 'Open bookmarks')
 
   -- Format
   nmap('<leader>ff', function()
@@ -113,9 +131,9 @@ require('plug_cfg.typescript').setup()
 require('neodev').setup()
 
 require('lspsaga').setup({
-  symbol_in_winbar = { enable = true },
-  finder = { layout = 'normal' },
-  ui = { sign = false },
+  symbol_in_winbar = {
+    enable = true
+  },
 })
 
 require('plug_cfg.mason').setup(servers, capabilities, on_attach)

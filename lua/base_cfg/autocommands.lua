@@ -36,16 +36,6 @@ autocmd('FileType', {
   end,
 })
 
--- add new line at the end
-autocmd('BufWritePre', {
-  pattern = "*",
-  callback = function ()
-    local n_lines = vim.api.nvim_buf_line_count(0)
-    local last_nonblank = vim.fn.prevnonblank(n_lines)
-    if last_nonblank <= n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' }) end
-  end
-})
-
 -- trim whitespaces
 autocmd('BufWritePre', {
   pattern = '*',
