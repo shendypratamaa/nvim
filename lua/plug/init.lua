@@ -1,107 +1,4 @@
 return {
-  -- Git related plugins
-  { 'lewis6991/gitsigns.nvim' },
-
-  {
-    'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set(
-        'n',
-        '<leader>gd',
-        '<cmd>Gvdiffsplit!<cr>',
-        { desc = 'Open Fugitive Git' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>ga',
-        '<cmd>Git<cr>',
-        { desc = 'Open Fugitive Git' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>gq',
-        '<cmd>diffget //2<cr>',
-        { desc = 'Diff Get //2' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>gp',
-        '<cmd>diffget //3<cr>',
-        { desc = 'Diff Get //3' }
-      )
-    end,
-  },
-
-  -- File Explorer
-  {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require('plug_cfg.nvimtree')
-      vim.keymap.set(
-        'n',
-        '<leader>fn',
-        '<cmd>NvimTreeToggle<cr>',
-        { desc = 'Open File Explorer' }
-      )
-    end,
-  },
-
-  -- Undo Tree
-  {
-    'mbbill/undotree',
-    keys = {
-      { '<leader>du', '<cmd>UndotreeToggle<cr>', desc = 'Open Undotree' },
-    },
-  },
-
-  -- Tmux (navigate seamless between neovim)
-  {
-    'christoomey/vim-tmux-navigator',
-    keys = {
-      { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', desc = 'Tmux Left' },
-      { '<C-j>', '<cmd>TmuxNavigateDown<cr>', desc = 'Tmux Down' },
-      { '<C-k>', '<cmd>TmuxNavigateUp<cr>', desc = 'Tmux Up' },
-      { '<C-l>', '<cmd>TmuxNavigateRight<cr>', desc = 'Tmux Right' },
-    },
-    config = function()
-      require('plug_cfg.tmux-navigator')
-    end,
-  },
-
-  -- Icons
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
-
-  -- Motion
-  { 'tpope/vim-surround' },
-
-  -- Status Line
-  { 'nvim-lualine/lualine.nvim' },
-
-  -- Peek Number
-  { 'nacro90/numb.nvim' },
-
-  -- Useful plugin to show you pending keybinds.
-  {
-    'folke/which-key.nvim',
-    opts = {
-      plugins = {
-        marks = false,
-        register = false,
-      },
-      key_labels = {
-        ['<space>'] = 'SPC',
-        ['<cr>'] = 'RET',
-        ['<tab>'] = 'TAB',
-      },
-      layout = {
-        height = { min = 4, max = 25 },
-        width = { min = 20, max = 50 },
-        spacing = 1,
-        align = 'center',
-      },
-    },
-  },
-
   -- LSP Configuration & Plugins
   {
     'neovim/nvim-lspconfig',
@@ -135,31 +32,6 @@ return {
     },
   },
 
-  -- Autopairs
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    config = function()
-      require('plug_cfg.autopairs')
-    end,
-  },
-
-  -- Colorscheme
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme('catppuccin')
-    end,
-  },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
-  -- Alternative Navigation
-  { 'ThePrimeagen/harpoon' },
-
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -187,6 +59,35 @@ return {
     build = ':TSUpdate',
   },
 
+  -- Undo Tree
+  {
+    'mbbill/undotree',
+    keys = {
+      { '<leader>du', '<cmd>UndotreeToggle<cr>', desc = 'Open Undotree' },
+    },
+  },
+
+  -- Tmux (navigate seamless between neovim)
+  {
+    'christoomey/vim-tmux-navigator',
+    keys = {
+      { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', desc = 'Tmux Left' },
+      { '<C-j>', '<cmd>TmuxNavigateDown<cr>', desc = 'Tmux Down' },
+      { '<C-k>', '<cmd>TmuxNavigateUp<cr>', desc = 'Tmux Up' },
+      { '<C-l>', '<cmd>TmuxNavigateRight<cr>', desc = 'Tmux Right' },
+    },
+  },
+
+  -- Colorscheme
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme('catppuccin')
+    end,
+  },
+
   -- Colorizer
   {
     'NvChad/nvim-colorizer.lua',
@@ -198,7 +99,46 @@ return {
     },
   },
 
+  -- Autopairs
+  { 'windwp/nvim-autopairs', event = 'InsertEnter' },
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
+
+  -- Alternative Navigation
+  { 'ThePrimeagen/harpoon' },
+
   -- Formatter
   { 'shendypratamaa/null-ls.nvim' },
+
+  -- Git (info)
+  { 'lewis6991/gitsigns.nvim' },
+
+  -- Git (solver)
+  { 'tpope/vim-fugitive' },
+
+  -- File Explorer
+  { 'nvim-tree/nvim-tree.lua' },
+
+  -- Icons
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
+
+  -- Motion
+  { 'tpope/vim-surround' },
+
+  -- Status Line
+  { 'nvim-lualine/lualine.nvim' },
+
+  -- Peek Number
+  { 'nacro90/numb.nvim' },
+
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim' },
+
+  -- todo comments
+  { 'folke/todo-comments.nvim' },
+
+  -- trouble
+  { 'folke/trouble.nvim' },
 }
 

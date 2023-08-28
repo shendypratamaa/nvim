@@ -19,6 +19,7 @@ local qForCloseFloating = augroup('qForCloseFloating', { clear = true })
 autocmd('FileType', {
   group = qForCloseFloating,
   pattern = {
+    "qf",
     'help',
     'fugitive',
     'telescope_prompt',
