@@ -14,9 +14,19 @@ require('nvim-treesitter.configs').setup({
   modules = {},
   sync_install = true,
   auto_install = true,
-  highlight = { enable = true },
-  indent = { enable = true },
-  autotag = { enable = true },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  },
+  autotag = {
+    enable = true,
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -69,5 +79,9 @@ require('nvim-treesitter.configs').setup({
       },
     },
   },
+})
+
+require('Comment').setup({
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 })
 
