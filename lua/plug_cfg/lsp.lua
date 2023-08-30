@@ -45,6 +45,7 @@ local disableDiagnosticsLspVirtualText = function(server)
 end
 
 local on_attach = function(client, bufnr)
+  -- Keymaps
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -52,6 +53,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
+  -- Disable Diagnostics & Formatting
   for k, _ in pairs(servers) do
     if client.name == k then
       client.server_capabilities.documentFormattingProvider = false
@@ -59,6 +61,7 @@ local on_attach = function(client, bufnr)
     end
   end
 
+  -- User Format Commands
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
     local n_lines = vim.api.nvim_buf_line_count(0)
@@ -68,7 +71,7 @@ local on_attach = function(client, bufnr)
     end
   end, { desc = 'Format current buffer with LSP' })
 
-  -- Typescript
+  -- Typescript Keymap
   if client.name == 'tsserver' then
     nmap('<leader>to', '<cmd>TSToolsOrganizeImports<cr>', '[T]ypescript [O]rganize')
     nmap('<leader>tm', '<cmd>TSToolsAddMissingImports<cr>', '[T]ypescript [M]issing')
@@ -78,7 +81,7 @@ local on_attach = function(client, bufnr)
     nmap('<leader>tf', '<cmd>TSToolsGoToSourceDefinition<cr>', '[T]ypescript [F]ix All')
   end
 
-  -- Lua
+  -- Lua Keymap
   if client.name == "lua_ls" then
     nmap(']w', '<cmd>w<cr><cmd>so%<cr>', 'Source File')
   end
@@ -119,6 +122,12 @@ local on_attach = function(client, bufnr)
     vim.cmd('Format')
     print('Formatting File Successfuly 💅')
   end, '[F]ormat [F]ile')
+
+  require("lsp_signature").on_attach({
+    hint_prefix = "🦕 ",
+    toggle_key = "<C-k>",
+    toggle_key_flip_floatwin_setting = true,
+  }, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -10,6 +10,7 @@ return {
       { 'nvimdev/lspsaga.nvim' },
       { 'pmizio/typescript-tools.nvim' },
       { 'b0o/schemastore.nvim' },
+      { 'ray-x/lsp_signature.nvim' }
     },
   },
 
