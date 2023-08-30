@@ -61,3 +61,6 @@ keymap(
   { silent = true, desc = 'Open Mason' }
 )
 
+-- URL VIEW
+keymap('n', 'gx', '<cmd>lua open_in_browser()<cr>', opts)
+

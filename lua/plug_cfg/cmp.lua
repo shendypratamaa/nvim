@@ -44,6 +44,20 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
+  sorting = {
+    priority_weight = 1.0,
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
   mapping = cmp.mapping.preset.insert({
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -78,7 +92,8 @@ cmp.setup({
   }),
   formatting = {
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+      vim_item.kind =
+        string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         buffer = '[Buffer]',
         nvim_lsp = '[LSP]',

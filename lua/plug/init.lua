@@ -10,7 +10,8 @@ return {
       { 'nvimdev/lspsaga.nvim' },
       { 'pmizio/typescript-tools.nvim' },
       { 'b0o/schemastore.nvim' },
-      { 'ray-x/lsp_signature.nvim' }
+      { 'ray-x/lsp_signature.nvim' },
+      { 'RRethy/vim-illuminate' }
     },
   },
 
@@ -142,5 +143,38 @@ return {
 
   -- trouble
   { 'folke/trouble.nvim' },
+
+  -- translator
+  {
+    'potamides/pantran.nvim',
+    config = function()
+      local pantran = require('pantran')
+      pantran.setup({
+        default_engine = 'google',
+        engines = {
+          google = {
+            fallback = {
+              default_source = 'en',
+              default_target = 'id',
+            },
+          },
+        },
+      })
+      vim.keymap.set({ 'n', 'x' }, '<leader>tr', pantran.motion_translate, {
+        desc = 'Translate Motion Words',
+        silent = true,
+        expr = true,
+        noremap = true,
+      })
+      vim.keymap.set('n', '<leader>trr', function()
+        return pantran.motion_translate() .. '_'
+      end, {
+        desc = 'Translate Words One Line',
+        silent = true,
+        expr = true,
+        noremap = true,
+      })
+    end,
+  },
 }
 

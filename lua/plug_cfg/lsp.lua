@@ -117,12 +117,17 @@ local on_attach = function(client, bufnr)
   nmap('<leader>tk', '<cmd>Lspsaga term_toggle mkill<cr>', 'Kill Process')
   nmap('<leader>tb', '<cmd>Lspsaga term_toggle bookmarks<cr>', 'Open bookmarks')
 
+  -- Illuminate Under Cursor
+  nmap(']n', '<cmd>lua require("illuminate").goto_next_reference()<CR>', 'Illuminate Go Next')
+  nmap('[n', '<cmd>lua require("illuminate").goto_prev_reference()<CR>', 'Illuminate Go Prev')
+
   -- Format
   nmap('<leader>ff', function()
     vim.cmd('Format')
     print('Formatting File Successfuly 💅')
   end, '[F]ormat [F]ile')
 
+  -- Lsp Signature
   require("lsp_signature").on_attach({
     hint_prefix = "🦕 ",
     toggle_key = "<C-k>",
@@ -143,6 +148,9 @@ require('lspsaga').setup({
   symbol_in_winbar = {
     enable = true
   },
+  ui = {
+    sign = false,
+  }
 })
 
 require('plug_cfg.mason').setup(servers, capabilities, on_attach)
