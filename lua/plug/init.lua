@@ -11,7 +11,7 @@ return {
       { 'pmizio/typescript-tools.nvim' },
       { 'b0o/schemastore.nvim' },
       { 'ray-x/lsp_signature.nvim' },
-      { 'RRethy/vim-illuminate' }
+      { 'RRethy/vim-illuminate' },
     },
   },
 
@@ -63,12 +63,7 @@ return {
   },
 
   -- Undo Tree
-  {
-    'mbbill/undotree',
-    keys = {
-      { '<leader>du', '<cmd>UndotreeToggle<cr>', desc = 'Open Undotree' },
-    },
-  },
+  { 'mbbill/undotree' },
 
   -- Tmux (navigate seamless between neovim)
   {
@@ -87,6 +82,9 @@ return {
     name = 'catppuccin',
     priority = 1000,
     config = function()
+      require('catppuccin').setup({
+        transparent_background = true,
+      })
       vim.cmd.colorscheme('catppuccin')
     end,
   },
@@ -181,18 +179,18 @@ return {
   {
     'kwakzalver/duckytype.nvim',
     opts = {
-      expected = "english_common",
+      expected = 'english_common',
       number_of_words = 60,
       average_word_length = 6,
       window_config = {
-        border = "rounded"
+        border = 'rounded',
       },
       highlight = {
-        good = "Comment",
-        bad = "Error",
-        remaining = "",
+        good = 'Comment',
+        bad = 'Error',
+        remaining = '',
       },
-    }
-  }
+    },
+  },
 }
 
