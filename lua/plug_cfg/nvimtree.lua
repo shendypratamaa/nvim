@@ -26,8 +26,8 @@ local cfg = {
     hide_root_folder = false,
     side = 'right',
     preserve_window_proportions = true,
-    number = false,
-    relativenumber = false,
+    number = true,
+    relativenumber = true,
     signcolumn = 'yes',
   },
   renderer = {

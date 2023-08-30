@@ -54,6 +54,9 @@ local diagnostics = {
   sources = { 'nvim_diagnostic' },
   sections = { 'error', 'warn', 'info', 'hint' },
   symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+  on_click = function()
+    vim.api.nvim_command("Trouble")
+  end
 }
 
 local spaces = {
