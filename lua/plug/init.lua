@@ -160,13 +160,13 @@ return {
           },
         },
       })
-      vim.keymap.set({ 'n', 'x' }, '<leader>tr', pantran.motion_translate, {
+      vim.keymap.set({ 'n', 'x' }, 'tr', pantran.motion_translate, {
         desc = 'Translate Motion Words',
         silent = true,
         expr = true,
         noremap = true,
       })
-      vim.keymap.set('n', '<leader>trr', function()
+      vim.keymap.set('n', 'trr', function()
         return pantran.motion_translate() .. '_'
       end, {
         desc = 'Translate Words One Line',
@@ -176,5 +176,23 @@ return {
       })
     end,
   },
+
+  -- GAME
+  {
+    'kwakzalver/duckytype.nvim',
+    opts = {
+      expected = "english_common",
+      number_of_words = 60,
+      average_word_length = 6,
+      window_config = {
+        border = "rounded"
+      },
+      highlight = {
+        good = "Comment",
+        bad = "Error",
+        remaining = "",
+      },
+    }
+  }
 }
 
