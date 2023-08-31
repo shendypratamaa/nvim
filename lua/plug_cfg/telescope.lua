@@ -1,5 +1,4 @@
 local telescope_ok, telescope = pcall(require, 'telescope')
-
 local keymap = vim.keymap.set
 
 if not telescope_ok then
@@ -18,7 +17,7 @@ telescope.setup({
         [']q'] = actions.close,
         ['<CR>'] = actions.select_default,
         ['<C-f>'] = actions.preview_scrolling_down,
-        ['<C-u>'] = actions.preview_scrolling_up,
+        ['<C-e>'] = actions.preview_scrolling_up,
         ['<C-v>'] = actions.select_vertical,
         ['<C-h>'] = actions.select_horizontal,
         ['<C-n>'] = actions.move_selection_next,
@@ -37,7 +36,7 @@ telescope.setup({
         [']q'] = actions.close,
         ['<CR>'] = actions.select_default,
         ['<C-f>'] = actions.preview_scrolling_down,
-        ['<C-u>'] = actions.preview_scrolling_up,
+        ['<C-e>'] = actions.preview_scrolling_up,
         ['sp'] = actions.select_horizontal,
         ['vsp'] = actions.select_vertical,
         ['<C-n>'] = actions.move_selection_next,
@@ -70,6 +69,7 @@ telescope.setup({
       height = 0.75,
       preview_cutoff = 120,
     },
+    path_display = {"smart"}
   },
 })
 
@@ -99,8 +99,9 @@ for k, v in pairs(telescope_borders) do
 end
 
 telescope.load_extension('fzf')
+telescope.load_extension('harpoon')
 
-keymap('n', '<leader>st', "<cmd>TodoTelescope<cr>", { desc = '[S]earch [T]odolist' })
+keymap('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = '[S]earch [T]odolist' })
 keymap('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 keymap('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 keymap('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -109,5 +110,9 @@ keymap('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 keymap('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 keymap('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 keymap('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-keymap('n', '<leader>/', function() builtin.current_buffer_fuzzy_find( themes.get_dropdown({ winblend = 0, previewer = false })) end, { desc = '[/] Fuzzily search in current buffer' })
+keymap('n', '<leader>/', function()
+  builtin.current_buffer_fuzzy_find(
+    themes.get_dropdown({ winblend = 0, previewer = false })
+  )
+end, { desc = '[/] Fuzzily search in current buffer' })
 

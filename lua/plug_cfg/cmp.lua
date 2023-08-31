@@ -107,11 +107,6 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'buffer' },
   }),
-  cmp.setup.cmdline({ '/', '?' }, {
-    view = {
-      entries = { name = 'wildmenu', separator = ' | ' },
-    },
-  }),
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
@@ -119,6 +114,11 @@ cmp.setup({
     }, {
       { name = 'cmdline' },
     }),
+  }),
+  cmp.setup.cmdline({ '/', '?' }, {
+    view = {
+      entries = { name = 'wildmenu', separator = ' | ' },
+    },
   }),
   window = {
     completion = borderstyle,

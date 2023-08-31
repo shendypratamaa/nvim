@@ -47,3 +47,4 @@ vim.cmd([[
 --   pattern = '*',
 --   command = [[%s/\s\+$//e]],
 -- })
+

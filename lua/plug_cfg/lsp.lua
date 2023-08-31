@@ -64,11 +64,6 @@ local on_attach = function(client, bufnr)
   -- User Format Commands
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
-    local n_lines = vim.api.nvim_buf_line_count(0)
-    local last_nonblank = vim.fn.prevnonblank(n_lines)
-    if last_nonblank <= n_lines then
-      vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' })
-    end
   end, { desc = 'Format current buffer with LSP' })
 
   -- Typescript Keymap
@@ -124,6 +119,11 @@ local on_attach = function(client, bufnr)
   -- Format
   nmap('<leader>ff', function()
     vim.cmd('Format')
+    local n_lines = vim.api.nvim_buf_line_count(0)
+    local last_nonblank = vim.fn.prevnonblank(n_lines)
+    if last_nonblank <= n_lines then
+      vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, { '' })
+    end
     print('Formatting File Successfuly 💅')
   end, '[F]ormat [F]ile')
 
