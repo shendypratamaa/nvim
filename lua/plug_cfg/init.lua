@@ -14,4 +14,5 @@ require('plug_cfg.nvimtree')
 require('plug_cfg.numb')
 require('plug_cfg.statusline')
 require('plug_cfg.tmux-navigator')
-
+require('plug_cfg.translate')
+require('plug_cfg.typetest')

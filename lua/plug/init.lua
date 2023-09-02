@@ -62,9 +62,6 @@ return {
     build = ':TSUpdate',
   },
 
-  -- Undo Tree
-  { 'mbbill/undotree' },
-
   -- Tmux (navigate seamless between neovim)
   {
     'christoomey/vim-tmux-navigator',
@@ -82,9 +79,7 @@ return {
     name = 'catppuccin',
     priority = 1000,
     config = function()
-      require('catppuccin').setup({
-        transparent_background = true,
-      })
+      require('catppuccin').setup({ transparent_background = true })
       vim.cmd.colorscheme('catppuccin')
     end,
   },
@@ -99,6 +94,9 @@ return {
       },
     },
   },
+
+  -- Undo Tree
+  { 'mbbill/undotree' },
 
   -- Autopairs
   { 'windwp/nvim-autopairs', event = 'InsertEnter' },
@@ -143,54 +141,10 @@ return {
   { 'folke/trouble.nvim' },
 
   -- translator
-  {
-    'potamides/pantran.nvim',
-    config = function()
-      local pantran = require('pantran')
-      pantran.setup({
-        default_engine = 'google',
-        engines = {
-          google = {
-            fallback = {
-              default_source = 'en',
-              default_target = 'id',
-            },
-          },
-        },
-      })
-      vim.keymap.set({ 'n', 'x' }, 'tr', pantran.motion_translate, {
-        desc = 'Translate Motion Words',
-        silent = true,
-        expr = true,
-        noremap = true,
-      })
-      vim.keymap.set('n', 'trr', function()
-        return pantran.motion_translate() .. '_'
-      end, {
-        desc = 'Translate Words One Line',
-        silent = true,
-        expr = true,
-        noremap = true,
-      })
-    end,
-  },
+  { 'potamides/pantran.nvim' },
 
   -- GAME
-  {
-    'kwakzalver/duckytype.nvim',
-    opts = {
-      expected = 'english_common',
-      number_of_words = 60,
-      average_word_length = 6,
-      window_config = {
-        border = 'rounded',
-      },
-      highlight = {
-        good = 'Comment',
-        bad = 'Error',
-        remaining = '',
-      },
-    },
-  },
+  { 'kwakzalver/duckytype.nvim' }
+
 }
 
