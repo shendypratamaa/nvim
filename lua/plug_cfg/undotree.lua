@@ -15,7 +15,7 @@ vim.cmd([[
 
 vim.keymap.set(
   'n',
-  '<leader>du',
+  ']zu',
   '<cmd>UndotreeToggle<cr>',
   { desc = 'Open Undotree', silent = true }
 )

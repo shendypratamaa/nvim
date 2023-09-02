@@ -10,6 +10,9 @@ local actions_layout = require('telescope.actions.layout')
 local builtin = require('telescope.builtin')
 local themes = require('telescope.themes')
 
+--  NOTE: extends qf with folke/trouble
+local trouble = require("trouble.providers.telescope")
+
 telescope.setup({
   defaults = {
     mappings = {
@@ -18,14 +21,12 @@ telescope.setup({
         ['<CR>'] = actions.select_default,
         ['<C-f>'] = actions.preview_scrolling_down,
         ['<C-e>'] = actions.preview_scrolling_up,
-        ['<C-v>'] = actions.select_vertical,
-        ['<C-h>'] = actions.select_horizontal,
         ['<C-n>'] = actions.move_selection_next,
         ['<C-p>'] = actions.move_selection_previous,
         ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
         ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-        ['<C-t>'] = actions.smart_send_to_qflist + actions.open_qflist,
-        ['<C-q>'] = actions_layout.toggle_preview,
+        ['<C-q>'] = trouble.open_with_trouble,
+        ['<C-t>'] = actions_layout.toggle_preview,
 
         ['<Down>'] = false,
         ['<Up>'] = false,
@@ -33,7 +34,6 @@ telescope.setup({
       },
       n = {
         ['q'] = actions.close,
-        [']q'] = actions.close,
         ['<CR>'] = actions.select_default,
         ['<C-f>'] = actions.preview_scrolling_down,
         ['<C-e>'] = actions.preview_scrolling_up,
@@ -43,8 +43,8 @@ telescope.setup({
         ['<C-p>'] = actions.move_selection_previous,
         ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
         ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-        ['<C-t>'] = actions.smart_send_to_qflist + actions.open_qflist,
-        ['<C-q>'] = actions_layout.toggle_preview,
+        ['<C-q>'] = trouble.open_with_trouble,
+        ['<C-t>'] = actions_layout.toggle_preview,
 
         ['<Down>'] = false,
         ['<Up>'] = false,
@@ -102,15 +102,15 @@ telescope.load_extension('fzf')
 telescope.load_extension('harpoon')
 
 keymap('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = '[S]earch [T]odolist' })
-keymap('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-keymap('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-keymap('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-keymap('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
+keymap('n', '<leader>s<space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+keymap('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch [W]ord CURRENT' })
+keymap('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch [G]rep' })
 keymap('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 keymap('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 keymap('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-keymap('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-keymap('n', '<leader>/', function()
+keymap('n', '<leader>sq', builtin.quickfix, { desc = '[S]earch [Q]uickfix' })
+keymap('n', '<leader>s?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
+keymap('n', '<leader>s/', function()
   builtin.current_buffer_fuzzy_find(
     themes.get_dropdown({ winblend = 0, previewer = false })
   )

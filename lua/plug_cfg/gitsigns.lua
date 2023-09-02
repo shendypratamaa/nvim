@@ -32,7 +32,7 @@ require('gitsigns').setup({
       'n',
       '<leader>gb',
       require('gitsigns').toggle_current_line_blame,
-      { buffer = bufnr, desc = '[G]it [T]toggle Delete' }
+      { buffer = bufnr, desc = '[G]it [B]lame' }
     )
     vim.keymap.set(
       'n',

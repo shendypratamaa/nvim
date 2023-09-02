@@ -14,3 +14,16 @@ function _G.open_in_browser()
   end
 end
 
+-- Greeper Word for Quickfix
+function _G.on_current_directory()
+  local current_word = vim.fn.input('Looking Word Current File 👀 > ')
+  if current_word ~= '' then
+    local word = string.format('vimgrep /%s/ ** | Trouble quickfix',
+      vim.fn.escape(current_word, '/')
+    )
+    vim.cmd(word)
+  else
+    print('Word Not Found!')
+  end
+end
+

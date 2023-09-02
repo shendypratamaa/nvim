@@ -2,13 +2,13 @@ vim.keymap.set(
   'n',
   '<leader>gd',
   '<cmd>Gvdiffsplit!<cr>',
-  { desc = 'Open Fugitive Git' }
+  { desc = 'Fugitive Split Diff' }
 )
 vim.keymap.set(
   'n',
   '<leader>ga',
   '<cmd>Git<cr>',
-  { desc = 'Open Fugitive Git' }
+  { desc = 'Git Fugitive Changes' }
 )
 vim.keymap.set(
   'n',

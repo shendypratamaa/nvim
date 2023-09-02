@@ -16,11 +16,22 @@ local opts = {
   },
   layout = {
     height = { min = 4, max = 25 },
-    width = { min = 20, max = 50 },
-    spacing = 1,
+    width = { min = 30, max = 50 },
+    spacing = 4,
     align = 'center',
   },
 }
+
+whichkey.register({
+  ['<leader>f'] = { name = '+LSP' },
+  ['<leader>g'] = { name = '+GIT' },
+  ['<leader>s'] = { name = '+SEARCH' },
+  ['<leader>c'] = { name = '+CODE' },
+  ['<leader>ft'] = { name = '+SAGAXME' },
+  [']g'] = { name = '+HARPOON' },
+  [']t'] = { name = '+TROUBLE' },
+  [']z'] = { name = '+UTILS' },
+})
 
 whichkey.setup(opts)
 

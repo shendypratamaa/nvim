@@ -84,33 +84,28 @@ local on_attach = function(client, bufnr)
   -- Basic Lsp
   nmap('K', '<cmd>Lspsaga hover_doc<cr>', 'Hover Documentation')
   nmap('gd', '<cmd>Lspsaga goto_definition<cr>', '[G]oto [D]efinition')
-  nmap('<leader>rn', '<cmd>Lspsaga rename<cr>', '[R]e[n]ame')
-  nmap('<leader>ca', '<cmd>Lspsaga code_action<cr>', '[C]ode [A]ction')
+  nmap('<leader>fr', '<cmd>Lspsaga rename<cr>', '[R]ename')
   nmap('<leader>fo', '<cmd>Lspsaga outline<cr>', '[O]utline')
-  nmap('<leader>pd', '<cmd>Lspsaga peek_definition<cr>', '[P]eek [D]efinition')
-
-  -- Diagnostic
-  nmap(']e', '<cmd>Lspsaga show_line_diagnostics ++unfocus<cr>', 'Diagnostic Current Line')
-  nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Diagnostic Next')
-  nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Diagnostic Prev')
+  nmap('<leader>fs', '<cmd>Lspsaga code_action<cr>', '[C]ode [A]ction')
+  nmap('<leader>fd', '<cmd>Lspsaga peek_definition<cr>', '[P]eek [D]efinition')
 
   -- Incoming Outgoing Calls
-  nmap('<leader>ic', '<cmd>Lspsaga incoming_calls<cr>', '[I]incoming [C]alls')
-  nmap('<leader>oc', '<cmd>Lspsaga outgoing_calls<cr>', '[O]utgoing [C]calls')
+  nmap('<leader>fc', '<cmd>Lspsaga incoming_calls<cr>', 'Incoming [C]alls')
+  nmap('<leader>fC', '<cmd>Lspsaga outgoing_calls<cr>', 'Outgoing [C]calls')
 
   -- Definitions References Implementations
-  nmap('<leader>fr', '<cmd>Lspsaga finder ref<cr>', '[F]inder [R]eferences')
-  nmap('<leader>fd', '<cmd>Lspsaga finder def<cr>', '[F]inder [D]efinition')
-  nmap('<leader>fi', '<cmd>Lspsaga finder imp<cr>', '[F]inder [I]mplementation')
+  nmap('<leader>fR', '<cmd>Lspsaga finder ref<cr>', '[F]inder References')
+  nmap('<leader>fD', '<cmd>Lspsaga finder def<cr>', '[F]inder Definition')
+  nmap('<leader>fi', '<cmd>Lspsaga finder imp<cr>', '[F]inder Implementation')
   nmap('<leader>fa', '<cmd>Lspsaga finder def+ref+imp<cr>', '[F]inder [A]All')
 
   -- Intergrate Terminal With MyScripts
-  nmap('<leader>tF', '<cmd>Lspsaga term_toggle lf<cr>', 'Open LF')
-  nmap('<leader>te', '<cmd>Lspsaga term_toggle emoji<cr>', 'Open Emoji')
-  nmap('<leader>ts', '<cmd>Lspsaga term_toggle tmux-sesionizer<cr>', 'Open New Tmux Session')
-  nmap('<leader>tf', '<cmd>Lspsaga term_toggle search<cr>', 'Search Sometings From Internet')
-  nmap('<leader>tk', '<cmd>Lspsaga term_toggle mkill<cr>', 'Kill Process')
-  nmap('<leader>tb', '<cmd>Lspsaga term_toggle bookmarks<cr>', 'Open bookmarks')
+  nmap('<leader>ftF', '<cmd>Lspsaga term_toggle lf<cr>', 'Open LF')
+  nmap('<leader>fte', '<cmd>Lspsaga term_toggle emoji<cr>', 'Open Emoji')
+  nmap('<leader>fts', '<cmd>Lspsaga term_toggle tmux-sesionizer<cr>', 'Open New Tmux Session')
+  nmap('<leader>ftf', '<cmd>Lspsaga term_toggle search<cr>', 'Search Sometings From Internet')
+  nmap('<leader>ftk', '<cmd>Lspsaga term_toggle mkill<cr>', 'Kill Process')
+  nmap('<leader>ftb', '<cmd>Lspsaga term_toggle bookmarks<cr>', 'Open bookmarks')
 
   -- Illuminate Under Cursor
   nmap(']n', '<cmd>lua require("illuminate").goto_next_reference()<CR>', 'Illuminate Go Next')
@@ -126,6 +121,11 @@ local on_attach = function(client, bufnr)
     end
     print('Formatting File Successfuly 💅')
   end, '[F]ormat [F]ile')
+
+  -- Diagnostic
+  nmap(']e', '<cmd>Lspsaga show_line_diagnostics ++unfocus<cr>', 'Diagnostic Current Line')
+  nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Diagnostic Next')
+  nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Diagnostic Prev')
 
   -- Lsp Signature
   require("lsp_signature").on_attach({
@@ -145,12 +145,8 @@ require('plug_cfg.typescript').setup()
 require('neodev').setup()
 
 require('lspsaga').setup({
-  symbol_in_winbar = {
-    enable = true
-  },
-  ui = {
-    sign = false,
-  }
+  symbol_in_winbar = { enable = true },
+  ui = { sign = false }
 })
 
 require('plug_cfg.mason').setup(servers, capabilities, on_attach)
