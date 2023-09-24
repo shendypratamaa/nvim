@@ -2,35 +2,37 @@ return {
   -- LSP Configuration & Plugins
   {
     'neovim/nvim-lspconfig',
+    pin = true,
     dependencies = {
-      { 'williamboman/mason-lspconfig.nvim' },
-      { 'williamboman/mason.nvim', config = true },
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-      { 'folke/neodev.nvim' },
-      { 'nvimdev/lspsaga.nvim' },
-      { 'pmizio/typescript-tools.nvim' },
-      { 'b0o/schemastore.nvim' },
-      { 'ray-x/lsp_signature.nvim' },
-      { 'RRethy/vim-illuminate' },
+      { 'williamboman/mason-lspconfig.nvim', pin = true },
+      { 'williamboman/mason.nvim', config = true, pin = true},
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, pin = true, },
+      { 'folke/neodev.nvim', pin = true, },
+      { 'nvimdev/lspsaga.nvim', pin = true },
+      { 'pmizio/typescript-tools.nvim', pin = true },
+      { 'b0o/schemastore.nvim', pin = true, },
+      { 'ray-x/lsp_signature.nvim', pin = true },
+      { 'RRethy/vim-illuminate', pin = true },
     },
   },
 
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
+    pin = true,
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
+      { 'L3MON4D3/LuaSnip', pin = true },
+      { 'saadparwaiz1/cmp_luasnip', pin = true },
 
       -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-path',
+      { 'hrsh7th/cmp-nvim-lsp', pin = true, },
+      { 'hrsh7th/cmp-buffer', pin = true, },
+      { 'hrsh7th/cmp-cmdline', pin = true, },
+      { 'hrsh7th/cmp-path', pin = true },
 
       -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      { 'rafamadriz/friendly-snippets', pin = true }
     },
   },
 
@@ -38,11 +40,13 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
+    pin = true,
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      { 'nvim-lua/plenary.nvim', pin = true },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
+        pin = true,
         cond = function()
           return vim.fn.executable('make') == 1
         end,
@@ -53,11 +57,12 @@ return {
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
+    pin = true,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context',
-      'JoosepAlviste/nvim-ts-context-commentstring',
-      'windwp/nvim-ts-autotag',
+      { 'nvim-treesitter/nvim-treesitter-textobjects', pin = true },
+      { 'nvim-treesitter/nvim-treesitter-context', pin = true },
+      { 'JoosepAlviste/nvim-ts-context-commentstring', pin = true },
+      { 'windwp/nvim-ts-autotag', pin = true }
     },
     build = ':TSUpdate',
   },
@@ -65,6 +70,7 @@ return {
   -- Tmux (navigate seamless between neovim)
   {
     'christoomey/vim-tmux-navigator',
+    pin = true,
     keys = {
       { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', desc = 'Tmux Left' },
       { '<C-j>', '<cmd>TmuxNavigateDown<cr>', desc = 'Tmux Down' },
@@ -78,6 +84,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
+    pin = true,
     config = function()
       require('catppuccin').setup({ transparent_background = true })
       vim.cmd.colorscheme('catppuccin')
@@ -88,6 +95,7 @@ return {
   {
     'NvChad/nvim-colorizer.lua',
     event = 'BufRead',
+    pin = true,
     opts = {
       user_default_options = {
         tailwind = true,
@@ -96,55 +104,55 @@ return {
   },
 
   -- Undo Tree
-  { 'mbbill/undotree' },
+  { 'mbbill/undotree', pin = true },
 
   -- Autopairs
-  { 'windwp/nvim-autopairs', event = 'InsertEnter' },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', pin = true },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', opts = {}, pin = true },
 
   -- Alternative Navigation
-  { 'ThePrimeagen/harpoon' },
+  { 'ThePrimeagen/harpoon', pin = true },
 
   -- Formatter
-  { 'shendypratamaa/null-ls.nvim' },
+  { 'shendypratamaa/null-ls.nvim', pin = true },
 
   -- Git (info)
-  { 'lewis6991/gitsigns.nvim' },
+  { 'lewis6991/gitsigns.nvim', pin = true },
 
   -- Git (solver)
-  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-fugitive', pin = true },
 
   -- File Explorer
-  { 'nvim-tree/nvim-tree.lua' },
+  { 'nvim-tree/nvim-tree.lua', pin = true },
 
   -- Icons
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  { 'nvim-tree/nvim-web-devicons', lazy = true, pin = true },
 
   -- Motion
-  { 'tpope/vim-surround' },
+  { 'tpope/vim-surround', pin = true },
 
   -- Status Line
-  { 'nvim-lualine/lualine.nvim' },
+  { 'nvim-lualine/lualine.nvim', pin = true },
 
   -- Peek Number
-  { 'nacro90/numb.nvim' },
+  { 'nacro90/numb.nvim', pin = true },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim' },
+  { 'folke/which-key.nvim', pin = true },
 
   -- todo comments
-  { 'folke/todo-comments.nvim' },
+  { 'folke/todo-comments.nvim', pin = true },
 
   -- trouble
-  { 'folke/trouble.nvim' },
+  { 'folke/trouble.nvim', pin = true },
 
   -- translator
-  { 'potamides/pantran.nvim' },
+  { 'potamides/pantran.nvim', pin = true },
 
   -- GAME
-  { 'kwakzalver/duckytype.nvim' }
+  { 'kwakzalver/duckytype.nvim', pin = true },
 
 }
 
