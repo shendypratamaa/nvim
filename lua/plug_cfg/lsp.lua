@@ -72,8 +72,9 @@ local on_attach = function(client, bufnr)
     nmap('<leader>tm', '<cmd>TSToolsAddMissingImports<cr>', '[T]ypescript [M]issing')
     nmap('<leader>ts', '<cmd>TSToolsSortImports<cr>', '[T]ypescript [S]ort')
     nmap('<leader>tr', '<cmd>TSToolsRemoveUnusedImports<cr>', '[T]ypescript [R]emove Unused Imports')
-    nmap('<leader>tf', '<cmd>TSToolsFixAll<cr>', '[T]ypescript [F]ix All')
-    nmap('<leader>tf', '<cmd>TSToolsGoToSourceDefinition<cr>', '[T]ypescript [F]ix All')
+    nmap('<leader>ta', '<cmd>TSToolsFixAll<cr>', '[T]ypescript [F]ix All')
+    nmap('<leader>tf', '<cmd>TSToolsFileReferences<cr>', '[T]ypescript Reference[S]')
+    nmap('gd', '<cmd>TSToolsGoToSourceDefinition<cr>', 'Typescript [G]o to [D]efinition')
   end
 
   -- Lua Keymap

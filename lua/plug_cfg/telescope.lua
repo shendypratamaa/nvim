@@ -107,7 +107,6 @@ keymap('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch [W]ord CURRENT
 keymap('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch [G]rep' })
 keymap('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 keymap('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-keymap('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 keymap('n', '<leader>sq', builtin.quickfix, { desc = '[S]earch [Q]uickfix' })
 keymap('n', '<leader>s?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 keymap('n', '<leader>s/', function()

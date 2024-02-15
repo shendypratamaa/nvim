@@ -60,4 +60,4 @@ keymap( 'n', '<leader>m', '<cmd>Mason<cr>', { silent = true, desc = 'Open Mason'
 keymap('n', 'gx', '<cmd>lua open_in_browser()<cr>', opts)
 
 -- GREPPER
-keymap('n', '<leader>sD', on_current_directory, { desc = "Find Word Current Directory", silent = true })
+keymap('n', '<leader>sd', on_current_directory, { desc = "Find Word Current Directory", silent = true })

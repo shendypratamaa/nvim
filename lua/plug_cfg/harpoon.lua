@@ -9,7 +9,7 @@ keymap(
 keymap(
   'n',
   ']gq',
-  '<cmd>Telescope harpoon marks<cr>',
+  '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>',
   { silent = true, desc = 'Harpoon Quick Menu' }
 )
 keymap(
