@@ -1,3 +1,9 @@
+local harpoon_ok, harpoon = pcall(require, "harpoon")
+
+if not harpoon_ok then
+  return
+end
+
 local keymap = vim.keymap.set
 
 keymap(
@@ -43,5 +49,5 @@ keymap(
   { silent = true, desc = 'Harpoon File 3' }
 )
 
-require('harpoon').setup()
+harpoon.setup()
 

@@ -20,8 +20,6 @@ keymap('x', 'J', ":m '>+1<cr>gv-gv", opts)
 keymap('x', 'K', ":m '<-2<cr>gv-gv", opts)
 
 -- NAVIGATION BUFFER
-keymap('n', '<S-q>', '<C-^>', { desc = 'Buffer Toggle Prev File' })
-keymap('n', ']qq', '<cmd>bw<cr>', { desc = 'Buffer Delete' })
 keymap('n', '<S-l>', '<cmd>bn<cr>', { desc = 'Buffer Next' })
 keymap('n', '<S-h>', '<cmd>bp<cr>', { desc = 'Buffer Previous' })
 
@@ -32,7 +30,6 @@ keymap('n', '[q', '<cmd>cprev<cr>', { desc = 'Quickfix Prev' })
 
 -- REMOVE PANES, MARK, HIGHLIGHTING
 keymap('n', 'nq', '<cmd>nohls<cr>', { desc = 'No Highlight Search' })
-keymap('n', '<leader>w', '<cmd>w<cr>:wshada!<cr>', { desc = 'Save W/Shada' })
 
 -- FIX-BEHAVE
 keymap('n', 'n', 'nzzzv', opts)
@@ -55,6 +52,9 @@ keymap('n', '<leader>l', '<cmd>Lazy<cr>', { silent = true, desc = 'Open Lazy' })
 
 -- MASON
 keymap( 'n', '<leader>m', '<cmd>Mason<cr>', { silent = true, desc = 'Open Mason' })
+
+-- LSPINFO
+keymap( 'n', '<leader>n', '<cmd>LspInfo<cr>', { silent = true, desc = 'Open Mason' })
 
 -- URL VIEW
 keymap('n', 'gx', '<cmd>lua open_in_browser()<cr>', opts)

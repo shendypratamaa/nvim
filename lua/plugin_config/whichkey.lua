@@ -26,7 +26,6 @@ whichkey.register({
   ['<leader>f'] = { name = '+LSP' },
   ['<leader>g'] = { name = '+GIT' },
   ['<leader>s'] = { name = '+SEARCH' },
-  ['<leader>c'] = { name = '+CODE' },
   ['<leader>ft'] = { name = '+SAGAXME' },
   [']g'] = { name = '+HARPOON' },
   [']t'] = { name = '+TROUBLE' },

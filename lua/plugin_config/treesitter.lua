@@ -1,4 +1,10 @@
-require('nvim-treesitter.configs').setup({
+local ts_ok, ts = pcall(require, "nvim-treesitter.configs")
+
+if not ts_ok then
+  return
+end
+
+ts.setup({
   ensure_installed = {
     'c',
     'lua',
@@ -23,17 +29,13 @@ require('nvim-treesitter.configs').setup({
   autotag = {
     enable = true,
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = ']zz',
-      node_incremental = ']vn',
-      scope_incremental = ']vs',
-      node_decremental = ']vm',
+      init_selection = "]zz",
+      node_incremental = "]vn",
+      scope_incremental = false,
+      node_decremental = "]vm",
     },
   },
   textobjects = {
@@ -81,7 +83,8 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
+ts.setup {}
+
 require('Comment').setup({
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 })
-

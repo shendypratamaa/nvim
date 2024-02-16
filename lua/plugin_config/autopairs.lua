@@ -1,4 +1,10 @@
-require('nvim-autopairs').setup({
+local pairs_ok, pairs = pcall(require, "nvim-autopairs");
+
+if not pairs_ok then
+  return
+end
+
+pairs.setup({
   check_ts = true,
   disable_filetype = { 'TelescopePrompt' },
   ts_config = {
@@ -21,5 +27,5 @@ require('nvim-autopairs').setup({
 })
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done({}))
 
+require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done({}))

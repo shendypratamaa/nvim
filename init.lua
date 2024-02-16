@@ -32,10 +32,9 @@ local disabled_default = {
   },
 }
 
-require('lazy').setup('plug', disabled_default)
-require('base_cfg.global')
-require('base_cfg.keymaps')
-require('base_cfg.options')
-require('base_cfg.autocommands')
-require('plug_cfg.init')
-
+require('lazy').setup('plugin', disabled_default)
+require('base_config.global')
+require('base_config.keymaps')
+require('base_config.options')
+require('base_config.autocommands')
+require('plugin_config.init')

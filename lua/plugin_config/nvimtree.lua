@@ -23,7 +23,6 @@ local cfg = {
     cursorline = true,
     debounce_delay = 15,
     width = 50,
-    hide_root_folder = false,
     side = 'right',
     preserve_window_proportions = true,
     number = true,

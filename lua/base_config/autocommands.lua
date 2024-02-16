@@ -38,11 +38,9 @@ autocmd('FileType', {
 })
 
 -- trim whitespaces x-axis
-vim.cmd([[
-    autocmd BufWritePre * %s/\s\+$//e
-]])
+vim.cmd([[ autocmd BufWritePre * %s/\s\+$//e ]])
 
--- trim whitespaces x&y-axis
+-- trim whitespaces x&y-axis when save file
 -- autocmd('BufWritePre', {
 --   pattern = '*',
 --   command = [[%s/\s\+$//e]],

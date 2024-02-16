@@ -1,4 +1,5 @@
 local telescope_ok, telescope = pcall(require, 'telescope')
+
 local keymap = vim.keymap.set
 
 if not telescope_ok then
@@ -10,7 +11,6 @@ local actions_layout = require('telescope.actions.layout')
 local builtin = require('telescope.builtin')
 local themes = require('telescope.themes')
 
---  NOTE: extends qf with folke/trouble
 local trouble = require("trouble.providers.telescope")
 
 telescope.setup({
