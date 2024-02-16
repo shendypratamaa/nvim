@@ -12,8 +12,8 @@ gs.setup({
     delay = 1000,
   },
   on_attach = function(bufnr)
-    keymap('n', ']c', gs.prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-    keymap('n', '[c', gs.next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+    keymap('n', '[c', gs.prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+    keymap('n', ']c', gs.next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
     keymap('n', '<leader>gh', gs.preview_hunk, { buffer = bufnr, desc = '[G]it Preview [H]unk' })
     keymap('n', '<leader>gt', gs.toggle_deleted, { buffer = bufnr, desc = '[G]it [T]toggle Delete' })
     keymap('n', '<leader>gb', gs.toggle_current_line_blame, { buffer = bufnr, desc = '[G]it [B]lame' })

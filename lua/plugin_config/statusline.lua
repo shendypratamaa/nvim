@@ -55,7 +55,7 @@ local diagnostics = {
   sections = { 'error', 'warn', 'info', 'hint' },
   symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
   on_click = function()
-    vim.api.nvim_command("Trouble")
+    vim.api.nvim_command("copen")
   end
 }
 

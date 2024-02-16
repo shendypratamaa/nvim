@@ -92,8 +92,8 @@ return {
     priority = 1000,
     pin = true,
     config = function()
-      require('catppuccin').setup({ transparent_background = true })
-      vim.cmd.colorscheme('catppuccin')
+      require('catppuccin').setup({ transparent_background = false })
+      vim.cmd.colorscheme('catppuccin-frappe')
     end,
   },
 
@@ -109,10 +109,23 @@ return {
     },
   },
 
-  -- typescript compile check
+  -- Indent Line
+  {
+    'nvimdev/indentmini.nvim',
+    event = 'BufEnter',
+    config = function()
+      require("indentmini").setup({
+        char = ".",
+        exclude = { }
+      })
+      vim.cmd.highlight("default link IndentLine Comment")
+    end,
+  },
+
+  -- Typescript compile check
   { 'dmmulroy/tsc.nvim', pin = true },
 
-  -- buffers
+  -- Buffers
   { 'echasnovski/mini.bufremove', version = '*', pin = true },
 
   -- Undo Tree
@@ -169,9 +182,6 @@ return {
 
   -- Todo comments
   { 'folke/todo-comments.nvim', pin = true },
-
-  -- Trouble
-  { 'folke/trouble.nvim', pin = true },
 
   -- Translator
   { 'potamides/pantran.nvim', pin = true },

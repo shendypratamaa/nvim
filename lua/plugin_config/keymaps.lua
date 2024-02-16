@@ -16,7 +16,7 @@ keymap('n', ']2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent = t
 keymap('n', ']3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, desc = 'Harpoon File 3' })
 
 -- MINI-BUFFERS
-keymap("n", "]q", "<cmd>lua MiniBufremove.unshow()<cr>", { desc = "Unshow BUffers" })
+keymap("n", "]qu", "<cmd>lua MiniBufremove.unshow()<cr>", { desc = "Unshow BUffers" })
 keymap("n", "]qq", "<cmd>bd<cr>", { desc = "Delete BUffers" })
 
 require("mini.bufremove").setup()
@@ -41,14 +41,23 @@ keymap('n', 'trr', function() return require("pantran").motion_translate() .. '_
   noremap = true,
 })
 
--- TROUBLE
-keymap('n', ']tt', function() require("trouble").open() end, { desc = '[T]rouble [T]oggle', silent = true })
-keymap('n', ']tq', function() require("trouble").open('quickfix') end, { desc = '[T]rouble [Q]uickfix', silent = true })
-keymap('n', ']td', function() require("trouble").open('document_diagnostics') end, { desc = '[T]rouble [D]ocument Diagnostics', silent = true })
-keymap('n', ']tw', function() require("trouble").open('workspace_diagnostics') end, { desc = '[T]rouble [W]orkspace Diagnostics', silent = true })
-
 -- UNDOTREE
 keymap('n', ']zu', '<cmd>UndotreeToggle<cr>', { desc = 'Open Undotree', silent = true })
 
 -- NVIM-TREE
 keymap('n', '<leader>fn', '<cmd>NvimTreeToggle<cr>', { desc = 'Open File Explorer' })
+
+-- QFLIST
+local is_copen_open = false
+
+local toggle_copen = function ()
+  if is_copen_open then
+    vim.cmd([[cclose]])
+    is_copen_open = false
+  else
+    vim.cmd([[copen]])
+    is_copen_open = true
+  end
+end
+
+keymap('n', "]tq", toggle_copen, { desc = "Toggle Copen Neovim" })

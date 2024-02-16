@@ -63,20 +63,21 @@ local on_attach = function(client, bufnr)
   nmap(']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', 'Diagnostic Next')
   nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Diagnostic Prev')
 
-  -- Opts Keymaps
-  require("plugin_config.lsp.keymaps").setup(client, nmap)
-
   -- Lsp Signature
   require("lsp_signature").on_attach(utils.lsp_signature, bufnr)
+
+  -- LSP UI
+  require('lspsaga').setup()
 
   -- Replacement for tsserver lsp
   require('plugin_config.typescript').setup()
 
-  -- LSP UI
-  require('lspsaga').setup()
+  -- Opts Keymaps
+  require("plugin_config.lsp.keymaps").setup(client, nmap)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('neodev').setup()

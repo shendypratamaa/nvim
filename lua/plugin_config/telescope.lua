@@ -11,8 +11,6 @@ local actions_layout = require('telescope.actions.layout')
 local builtin = require('telescope.builtin')
 local themes = require('telescope.themes')
 
-local trouble = require("trouble.providers.telescope")
-
 telescope.setup({
   defaults = {
     mappings = {
@@ -25,7 +23,7 @@ telescope.setup({
         ['<C-p>'] = actions.move_selection_previous,
         ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
         ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-        ['<C-q>'] = trouble.open_with_trouble,
+        ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-t>'] = actions_layout.toggle_preview,
 
         ['<Down>'] = false,
@@ -43,7 +41,7 @@ telescope.setup({
         ['<C-p>'] = actions.move_selection_previous,
         ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
         ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_better,
-        ['<C-q>'] = trouble.open_with_trouble,
+        ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
         ['<C-t>'] = actions_layout.toggle_preview,
 
         ['<Down>'] = false,
