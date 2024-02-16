@@ -1,7 +1,5 @@
 local todo_ok, todo = pcall(require, 'todo-comments')
 
-local keymap = vim.keymap.set
-
 if not todo_ok then
   return
 end
@@ -22,13 +20,6 @@ local opts = {
     TEST = { icon = '⏲ ', color = 'test', alt = { 'PASSED', 'FAILED' } },
   },
 }
-
-keymap('n', ']tn', function()
-  require('todo-comments').jump_next()
-end, { desc = '[T]odo [N]ext' })
-keymap('n', ']tp', function()
-  require('todo-comments').jump_prev()
-end, { desc = '[T]odo [P]rev' })
 
 todo.setup(opts)
 

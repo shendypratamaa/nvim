@@ -1,4 +1,4 @@
-local utils = require('plugin_config.lsp.lsp_opts')
+local utils = require('plugin_config.lsp.opts')
 
 for _, sign in ipairs(utils.signs) do
   vim.fn.sign_define(
@@ -64,7 +64,7 @@ local on_attach = function(client, bufnr)
   nmap('[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', 'Diagnostic Prev')
 
   -- Opts Keymaps
-  require("plugin_config.lsp.lsp_keymaps").setup(client, nmap)
+  require("plugin_config.lsp.keymaps").setup(client, nmap)
 
   -- Lsp Signature
   require("lsp_signature").on_attach(utils.lsp_signature, bufnr)
@@ -81,5 +81,5 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('neodev').setup()
 
-require('plugin_config.lsp.lsp_mason').setup(utils.servers, capabilities, on_attach)
+require('plugin_config.lsp.mason').setup(utils.servers, capabilities, on_attach)
 

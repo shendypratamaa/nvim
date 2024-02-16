@@ -109,9 +109,4 @@ keymap('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 keymap('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 keymap('n', '<leader>sq', builtin.quickfix, { desc = '[S]earch [Q]uickfix' })
 keymap('n', '<leader>s?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-keymap('n', '<leader>s/', function()
-  builtin.current_buffer_fuzzy_find(
-    themes.get_dropdown({ winblend = 0, previewer = false })
-  )
-end, { desc = '[/] Fuzzily search in current buffer' })
-
+keymap('n', '<leader>s/', function() builtin.current_buffer_fuzzy_find(themes.get_dropdown({ winblend = 0, previewer = false })) end, { desc = '[/] Fuzzily search in current buffer' })

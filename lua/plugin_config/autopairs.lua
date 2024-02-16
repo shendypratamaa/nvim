@@ -1,4 +1,4 @@
-local pairs_ok, pairs = pcall(require, "nvim-autopairs");
+local pairs_ok, pairs = pcall(require, 'nvim-autopairs')
 
 if not pairs_ok then
   return
@@ -29,3 +29,4 @@ pairs.setup({
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done({}))
+

@@ -14,10 +14,3 @@ vim.cmd([[
     endif
 ]])
 
-vim.keymap.set(
-  'n',
-  ']zu',
-  '<cmd>UndotreeToggle<cr>',
-  { desc = 'Open Undotree', silent = true }
-)
-
