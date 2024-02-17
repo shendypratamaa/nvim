@@ -88,13 +88,13 @@ return {
   -- Colorscheme
   {
     'catppuccin/nvim',
-    name = 'catppuccin',
+    lazy = false,
     priority = 1000,
     pin = true,
     config = function()
-      require('catppuccin').setup({ transparent_background = false })
-      vim.cmd.colorscheme('catppuccin-frappe')
-    end,
+      require('catppuccin').setup({ transparent_background = true })
+      vim.cmd.colorscheme('catppuccin')
+    end
   },
 
   -- Colorizer
