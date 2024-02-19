@@ -59,5 +59,4 @@ local toggle_copen = function ()
     is_copen_open = true
   end
 end
-
 keymap('n', "]tq", toggle_copen, { desc = "Toggle Copen Neovim" })
