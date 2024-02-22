@@ -128,6 +128,13 @@ return {
   -- Buffers
   { 'echasnovski/mini.bufremove', version = '*', pin = true },
 
+  -- Tabline
+  {
+    "romgrk/barbar.nvim",
+    pin = true,
+    opts = {}
+  },
+
   -- Undo Tree
   { 'mbbill/undotree', pin = true },
 

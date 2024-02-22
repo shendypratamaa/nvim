@@ -114,7 +114,7 @@ lualine.setup({
   sections = {
     lualine_a = { mode },
     lualine_b = { branch },
-    lualine_c = { buffers },
+    lualine_c = { "filename", "filesize" },
     lualine_x = { diff, diagnostics, spaces, encoding, filetype },
     lualine_y = { location },
     lualine_z = { 'progress' },
@@ -127,7 +127,6 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {},
-  extensions = {},
+  extensions = { 'quickfix' },
 })
 

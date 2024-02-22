@@ -23,6 +23,7 @@ local opts = {
 }
 
 whichkey.register({
+  ['<leader>b'] = { name = '+BUFFER' },
   ['<leader>f'] = { name = '+LSP' },
   ['<leader>g'] = { name = '+GIT' },
   ['<leader>s'] = { name = '+SEARCH' },

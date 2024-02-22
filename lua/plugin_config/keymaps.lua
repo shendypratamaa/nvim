@@ -47,16 +47,9 @@ keymap('n', ']zu', '<cmd>UndotreeToggle<cr>', { desc = 'Open Undotree', silent =
 -- NVIM-TREE
 keymap('n', '<leader>fn', '<cmd>NvimTreeToggle<cr>', { desc = 'Open File Explorer' })
 
--- QFLIST
-local is_copen_open = false
-
-local toggle_copen = function ()
-  if is_copen_open then
-    vim.cmd([[cclose]])
-    is_copen_open = false
-  else
-    vim.cmd([[copen]])
-    is_copen_open = true
-  end
-end
-keymap('n', "]tq", toggle_copen, { desc = "Toggle Copen Neovim" })
+-- BARBAR
+keymap('n', '<leader>bp', '<Cmd>BufferPick<CR>', { desc = "Buffer Pick" })
+keymap('n', '<leader>bn', '<Cmd>BufferOrderByBufferNumber<CR>', { desc = "Order By Number" })
+keymap('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', { desc = "Order By Directory" })
+keymap('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = "Order By Language" })
+keymap('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { desc = "Order By Window Number" })

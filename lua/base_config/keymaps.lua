@@ -60,4 +60,18 @@ keymap( 'n', '<leader>n', '<cmd>LspInfo<cr>', { silent = true, desc = 'Open Maso
 keymap('n', 'gx', '<cmd>lua open_in_browser()<cr>', opts)
 
 -- GREPPER
-keymap('n', '<leader>sd', on_current_directory, { desc = "Find Word Current Directory", silent = true })
+keymap('n', '<leader>fw', findWordUnderCursor, { desc = "Find Word **/*", silent = true })
+
+-- QFLIST
+local is_copen_open = false
+local toggle_copen = function ()
+  if is_copen_open then
+    vim.cmd([[cclose]])
+    is_copen_open = false
+  else
+    vim.cmd([[copen]])
+    is_copen_open = true
+  end
+end
+
+keymap('n', "]tq", toggle_copen, { desc = "Toggle Copen Neovim", silent = true  })
