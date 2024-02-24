@@ -125,9 +125,6 @@ return {
   -- Typescript compile check
   { 'dmmulroy/tsc.nvim', pin = true },
 
-  -- Buffers
-  { 'echasnovski/mini.bufremove', version = '*', pin = true },
-
   -- Tabline
   {
     "romgrk/barbar.nvim",

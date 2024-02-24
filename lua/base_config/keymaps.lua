@@ -20,12 +20,13 @@ keymap('x', 'J', ":m '>+1<cr>gv-gv", opts)
 keymap('x', 'K', ":m '<-2<cr>gv-gv", opts)
 
 -- NAVIGATION BUFFER
+keymap("n", "]bd", "<cmd>:bd<cr>", { desc = "Delete Buffers" })
+keymap('n', ']br', '<C-w>o<cr>', { desc = 'Remove All Split Panes' })
 keymap('n', '<S-l>', '<cmd>bn<cr>', { desc = 'Buffer Next' })
 keymap('n', '<S-h>', '<cmd>bp<cr>', { desc = 'Buffer Previous' })
 
 -- NAVIGATION QUICKFIX
 keymap('n', ']q', '<cmd>cnext<cr>', { desc = 'Quickfix Next' })
-keymap('n', ']zq', '<C-w>o<cr>', { desc = 'Remove All Split Panes' })
 keymap('n', '[q', '<cmd>cprev<cr>', { desc = 'Quickfix Prev' })
 
 -- REMOVE PANES, MARK, HIGHLIGHTING
@@ -51,16 +52,16 @@ keymap('n', 'sp', '<cmd>sp<cr>', opts)
 keymap('n', '<leader>l', '<cmd>Lazy<cr>', { silent = true, desc = 'Open Lazy' })
 
 -- MASON
-keymap( 'n', '<leader>m', '<cmd>Mason<cr>', { silent = true, desc = 'Open Mason' })
+keymap('n', '<leader>m', '<cmd>Mason<cr>', { silent = true, desc = 'Open Mason' })
 
 -- LSPINFO
-keymap( 'n', '<leader>n', '<cmd>LspInfo<cr>', { silent = true, desc = 'Open Mason' })
+keymap('n', '<leader>n', '<cmd>LspInfo<cr>', { silent = true, desc = 'Open Mason' })
 
 -- URL VIEW
 keymap('n', 'gx', '<cmd>lua open_in_browser()<cr>', opts)
 
 -- GREPPER
-keymap('n', '<leader>fw', findWordUnderCursor, { desc = "Find Word **/*", silent = true })
+keymap('n', ']fw', findWordUnderCursor, { desc = "Find Word **/*", silent = true })
 
 -- QFLIST
 local is_copen_open = false

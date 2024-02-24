@@ -23,12 +23,12 @@ local opts = {
 }
 
 whichkey.register({
-  ['<leader>b'] = { name = '+BUFFER' },
   ['<leader>f'] = { name = '+LSP' },
-  ['<leader>g'] = { name = '+GIT' },
   ['<leader>s'] = { name = '+SEARCH' },
   ['<leader>ft'] = { name = '+SAGAXME' },
-  [']g'] = { name = '+HARPOON' },
+  [']b'] = { name = '+BUFFER' },
+  [']g'] = { name = '+GIT' },
+  [']f'] = { name = '+UTILS' },
   [']t'] = { name = '+TROUBLE' },
   [']z'] = { name = '+UTILS' },
 })

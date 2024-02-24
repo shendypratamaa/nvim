@@ -1,25 +1,26 @@
 local keymap = vim.keymap.set
 
--- FUGITIVE
-keymap('n', '<leader>gd', '<cmd>Gvdiffsplit!<cr>', { desc = 'Fugitive Split Diff' })
-keymap('n', '<leader>ga', '<cmd>Git<cr>', { desc = 'Git Fugitive Changes' })
-keymap('n', '<leader>gq', '<cmd>diffget //2<cr>', { desc = 'Diff Get //2' })
-keymap('n', '<leader>gp', '<cmd>diffget //3<cr>', { desc = 'Diff Get //3' })
+-- FUGITIVE : GIT
+keymap('n', ']gg', '<cmd>Git<cr>', { desc = 'Git Fugitive Changes' })
+keymap('n', ']gd', '<cmd>Gvdiffsplit!<cr>', { desc = 'Fugitive Split Diff' })
+keymap('n', ']gq', '<cmd>diffget //2<cr>', { desc = 'Diff Get //2' })
+keymap('n', ']gp', '<cmd>diffget //3<cr>', { desc = 'Diff Get //3' })
+
+-- TELESCOPE : GIT
+keymap('n', ']gs', '<cmd>Telescope git_status<cr>', { desc = 'Telescope Git Status' })
+keymap('n', ']gB', '<cmd>Telescope git_branches<cr>', { desc = 'Telescope Git Branches' })
+keymap('n', ']gc', '<cmd>Telescope git_commits<cr>', { desc = 'Telescope Git Preview commit' })
 
 -- HARPOON
-keymap('n', ']ga', "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, desc = 'Harpoon Add' })
-keymap('n', ']gq', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', { silent = true, desc = 'Harpoon Quick Menu' })
-keymap('n', ']gn', "<cmd>lua require('harpoon.ui').nav_next()<cr>", { silent = true, desc = 'Harpoon Next' })
-keymap('n', ']gp', "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { silent = true, desc = 'Harpoon Prev' })
+keymap('n', ']fa', "<cmd>lua require('harpoon.mark').add_file()<cr>", { silent = true, desc = 'Harpoon Add' })
+keymap('n', ']fq', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', { silent = true, desc = 'Harpoon Quick Menu' })
+keymap('n', ']fn', "<cmd>lua require('harpoon.ui').nav_next()<cr>", { silent = true, desc = 'Harpoon Next' })
+keymap('n', ']fp', "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { silent = true, desc = 'Harpoon Prev' })
 keymap('n', ']1', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", { silent = true, desc = 'Harpoon File 1' })
 keymap('n', ']2', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { silent = true, desc = 'Harpoon File 2' })
 keymap('n', ']3', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { silent = true, desc = 'Harpoon File 3' })
-
--- MINI-BUFFERS
-keymap("n", "]qu", "<cmd>lua MiniBufremove.unshow()<cr>", { desc = "Unshow BUffers" })
-keymap("n", "]qq", "<cmd>bd<cr>", { desc = "Delete BUffers" })
-
-require("mini.bufremove").setup()
+keymap('n', ']4', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { silent = true, desc = 'Harpoon File 4' })
+keymap('n', ']5', "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", { silent = true, desc = 'Harpoon File 5' })
 
 -- TODO-COMMENTS
 keymap('n', ']tn', function() require('todo-comments').jump_next() end, { desc = '[T]odo [N]ext' })
@@ -48,8 +49,5 @@ keymap('n', ']zu', '<cmd>UndotreeToggle<cr>', { desc = 'Open Undotree', silent =
 keymap('n', '<leader>fn', '<cmd>NvimTreeToggle<cr>', { desc = 'Open File Explorer' })
 
 -- BARBAR
-keymap('n', '<leader>bp', '<Cmd>BufferPick<CR>', { desc = "Buffer Pick" })
-keymap('n', '<leader>bn', '<Cmd>BufferOrderByBufferNumber<CR>', { desc = "Order By Number" })
-keymap('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', { desc = "Order By Directory" })
-keymap('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', { desc = "Order By Language" })
-keymap('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', { desc = "Order By Window Number" })
+keymap('n', ']bp', '<Cmd>BufferPick<CR>', { desc = "Buffer Pick" })
+keymap('n', ']bn', '<Cmd>BufferOrderByBufferNumber<CR>', { desc = "Order By Number" })
