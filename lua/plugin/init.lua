@@ -54,6 +54,9 @@ return {
     },
   },
 
+  -- find tab indent
+  { "tpope/vim-sleuth" },
+
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
