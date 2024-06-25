@@ -13,6 +13,7 @@ ts.setup({
     'javascript',
     'vimdoc',
     'vim',
+    'php',
     'markdown',
     'markdown_inline',
   },

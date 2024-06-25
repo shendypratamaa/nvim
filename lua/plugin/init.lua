@@ -54,9 +54,6 @@ return {
     },
   },
 
-  -- find tab indent
-  { "tpope/vim-sleuth" },
-
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
@@ -74,6 +71,7 @@ return {
   {
     'christoomey/vim-tmux-navigator',
     pin = true,
+    cond = {function() return not vim.g.vscode end},
     keys = {
       { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', desc = 'Tmux Left' },
       { '<C-j>', '<cmd>TmuxNavigateDown<cr>', desc = 'Tmux Down' },
@@ -110,19 +108,6 @@ return {
         tailwind = true,
       },
     },
-  },
-
-  -- Indent Line
-  {
-    'nvimdev/indentmini.nvim',
-    event = 'BufEnter',
-    config = function()
-      require("indentmini").setup({
-        char = ".",
-        exclude = { }
-      })
-      vim.cmd.highlight("default link IndentLine Comment")
-    end,
   },
 
   -- Typescript compile check

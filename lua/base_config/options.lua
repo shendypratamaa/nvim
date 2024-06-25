@@ -2,6 +2,7 @@ local options = {
   syntax = 'on',
   filetype = 'plugin_indent_on',
   fileformat = "unix",
+  fileformats = "unix,dos",
   fileencoding = 'utf8',
   virtualedit = 'block',
   clipboard = 'unnamedplus',
